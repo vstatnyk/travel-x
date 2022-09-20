@@ -1,7 +1,10 @@
+import Header from "./components/Header";
+
 function App() {
   return (
     <div className="App">
-    <button>GO</button>
+    <Header title='Welcome to TravelX'/>
+    
     </div>
   );
 }

@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
-import { Button } from 'react-native'
-
-export const Button = () => {
+const Button = () => {
   return (
-    <Button
-        
-    
-    />
+    <button className='btn'>GO</button>
   )
 }
+
+export default Button
