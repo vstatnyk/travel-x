@@ -1,15 +1,26 @@
 import React from 'react'
 
+
+
+
 const EntryBox = (props) => {
+
+    
+    const handleClick = (e)=> {
+        const SSNum = e.target.ssn.value;
+        console.log(SSNum);
+    }
+
     return (
-        <form>
+        <form onSubmit={handleClick}>
             <label>
                 {props.text}
-                <input type="text" name="SSN" />
+                <input type="text" name="ssn" placeholder='xxx-xx-xxxx'/>
                 </label>
-            <input type="submit" value="Submit" />
+                <button>GO</button>
         </form>
     )
   }
+
   
   export default EntryBox
