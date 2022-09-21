@@ -4,7 +4,7 @@ import EntryBox from "./components/EntryBox";
 function App() {
   return (
     <div className="App">
-      <Header title='Welcome to TravelX'/>
+      <Header title='Welcome to Travel X'/>
       <EntryBox text = "Enter SSN Here: "/>
     </div>
   );
