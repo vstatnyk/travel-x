@@ -4,69 +4,69 @@
   "description": "Uni schema to support Immigration dashboard",
   "type": "object",
   "properties": {
-    "DMV": {
+    "People": {
       "description": "DMV Agency",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "name": {
-            "description": "Immigrant's Full Name",
-            "type": "string"
+          "DMV": {
+            "description": "DMV Agency",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Immigrant's Full Name",
+                "type": "string"
+              },
+              "dob": {
+                "description": "Immigrant's DOB",
+                "type": "string"
+              },
+              "dlNumber": {
+                "description": "Immigrant's dlNumber",
+                "type": "string"
+              }
+            }
           },
-          "dlNumber": {
-            "description": "Immigrant's DL Number",
-            "type": "string"
+          "SS": {
+            "description": "SS Agency",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Immigrant's Full Name",
+                "type": "string"
+              },
+              "dob": {
+                "description": "Immigrant's DOB",
+                "type": "string"
+              },
+              "ssNum": {
+                "description": "Immigrant's ss#",
+                "type": "string"
+              }
+            }
           },
-          "dob": {
-            "description": "Immigrant's DOB",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "SS": {
-      "description": "SS Agency",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "Immigrant's Full Name",
-            "type": "string"
-          },
-          "dob": {
-            "description": "Immigrant's DOB",
-            "type": "string"
-          },
-          "ssn": {
-            "description": "Immigrant's ssn",
-            "type": "string"
-          }
-        }
-      }
-    },
-    "DOS": {
-      "description": "DOS Agency",
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "Immigrant's Full Name",
-            "type": "string"
-          },
-          "dob": {
-            "description": "Immigrant's DOB",
-            "type": "string"
-          },
-          "passportNumber": {
-            "description": "Immigrant's Passport Number",
-            "type": "string"
-          },
-          "passportExp": {
-            "description": "Immigrant's Passport Expiration",
-            "type": "string"
+          "DOS": {
+            "description": "DOS Agency",
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Immigrant's Full Name",
+                "type": "string"
+              },
+              "dob": {
+                "description": "Immigrant's DOB",
+                "type": "string"
+              },
+              "passportNumber": {
+                "description": "Immigrant's Passport Number",
+                "type": "string"
+              },
+              "passportExp": {
+                "description": "Immigrant's Passport Expiration",
+                "type": "string"
+              }
+            }
           }
         }
       }
