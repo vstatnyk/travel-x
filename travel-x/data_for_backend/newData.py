@@ -11,8 +11,8 @@ with open ("lastNames.txt", 'r') as lName:
     global lastN
     lastN = lName.readlines()
 
-for i in range(0,1000):
-    name = f'{(firstN[randint(0,1947)])[:-1]} {lastN[randint(0,88798)][:-1]}'
+for i in range(0,500):
+    name = f'{(firstN[randint(0,19947)])[:-1]} {lastN[randint(0,88798)][:-1]}'
     ssn = f'{randint(0,999)}-{randint(0,99)}-{randint(0,9999)}'
     passportNumber = f'{randint(0,999999999)}'
     passportExp = f'{randint(1,12)}/{randint(1,29)}/{randint(2000,2030)}'
