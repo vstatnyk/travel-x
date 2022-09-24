@@ -1,4 +1,5 @@
 import React from 'react'
+import { query } from '../server';
 
 
 
@@ -6,9 +7,9 @@ import React from 'react'
 const EntryBox = (props) => {
 
     
-    const handleClick = (e)=> {
+    const handleClick = async (e)=> {
         const SSNum = e.target.ssn.value;
-        console.log(SSNum);
+        console.log(await query(SSNum));
     }
 
     return (
