@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 const createVendiaClient = require('@vendia/client').createVendiaClient;
-const data = require('../data_for_backend/rawData.json');
+const data = require('./rawData.json');
 dotenv.config();
 const sleep = ms => new Promise(r => setTimeout(r, ms)); // Delay for specified amount of time(ms).
 
@@ -8,7 +8,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms)); // Delay for specified 
 const client = createVendiaClient({
   apiUrl: `https://cihcal58f3.execute-api.us-west-1.amazonaws.com/graphql/`,
   websocketUrl: `wss://9ol9kpkz06.execute-api.us-west-1.amazonaws.com/graphql`,
-  apiKey: process.env.VENDIA_API_KEY
+  apiKey: process.env.REACT_APP_VENDIA_API_KEY
 });
 const { entities } = client;  // entities const to access schema properties.
 
