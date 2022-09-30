@@ -19,6 +19,5 @@ export async function query(ssn) {
       }
     },
   });
-  console.log(response.items);
-  return response.items[0].DMV.name;
+  return response.items[0];
 }

@@ -7,7 +7,7 @@ import { query } from '../server';
 const EntryBox = (props) => {
 
     
-    const handleClick = async (e)=> {
+    const handleClick = async (e) => {
         const SSNum = e.target.ssn.value;
         console.log(await query(SSNum));
     }
