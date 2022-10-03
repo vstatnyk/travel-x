@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import EntryBox from "./components/EntryBox";
-import background from "./components/background.png";
+// import background from "./components/background.png";
 import React from 'react';
 
 function App() {
