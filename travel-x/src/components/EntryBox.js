@@ -1,5 +1,5 @@
 import React from 'react'
-// import { query } from '../server';
+import { query } from '../server';
 
 const EntryBox = (props) => {
 
@@ -9,11 +9,12 @@ const EntryBox = (props) => {
     
     const handleClick = async (e) => {
         e.preventDefault();
-        // const SSNum = e.target.ssn.value;
-        // let response = await query(SSNum);
-        setDMV("Hi, I'm DMV")
-        setSS("Hi, I'm SS")
-        setDOS("Hi, I'm DOS")
+        const SSNum = e.target.ssn.value;
+        let response = await query(SSNum);
+        console.log(response);
+        setDMV("Hi, I'm DMV");
+        setSS("Hi, I'm SS");
+        setDOS("Hi, I'm DOS");
 
     }
 
