@@ -1,9 +1,6 @@
 import React from 'react'
 import { query } from '../server';
 
-
-
-
 const EntryBox = (props) => {
 
     
