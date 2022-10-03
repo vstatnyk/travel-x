@@ -26,13 +26,13 @@ const EntryBox = (props) => {
             </label>
             <button>GO</button>
             <div className='DMV'>
-            {DMV ? <p>{DMV}</p> : null}
+                {DMV ? <p>{DMV}</p> : null}
             </div>
             <div className='SS'>
-            {SS ? <p>{SS}</p> : null}
+                {SS ? <p>{SS}</p> : null}
             </div>
             <div className='DOS'>
-            {DOS ? <p>{DOS}</p> : null}
+                {DOS ? <p>{DOS}</p> : null}
             </div>
         </form>
     )
