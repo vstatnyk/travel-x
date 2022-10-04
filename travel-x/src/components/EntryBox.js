@@ -1,5 +1,6 @@
 import React from 'react'
 import { query } from '../server';
+import DataDisplay from './DataGrid';
 
 const EntryBox = (props) => {
 
@@ -18,6 +19,7 @@ const EntryBox = (props) => {
 
     }
 
+
     return (
         <form onSubmit={handleClick}>
             <label>
@@ -34,6 +36,7 @@ const EntryBox = (props) => {
             <div className='DOS'>
                 {DOS ? <p>{DOS}</p> : null}
             </div>
+            {/* <DataDisplay /> */}
         </form>
     )
   }

@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <Header title='Welcome to Travel X' />
       <EntryBox text = "Enter SSN Here: "/>
-      
     </div>
   );
 }
