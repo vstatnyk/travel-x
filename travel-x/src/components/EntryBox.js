@@ -1,12 +1,13 @@
-import React from 'react'
+import * as React from 'react'
 import { query } from '../server';
 import DataDisplay from './DataGrid';
 
 const EntryBox = (props) => {
 
-    const[DMV, setDMV] = React.useState(null)
-    const[SS, setSS] = React.useState(null)
-    const[DOS, setDOS] = React.useState(null)
+    const [DMV, setDMV] = React.useState(null);
+    const [SS, setSS] = React.useState(null);
+    const [DOS, setDOS] = React.useState(null);
+    const [ssNum, setSSN] = React.useState(null);
     
     const handleClick = async (e) => {
         e.preventDefault();
@@ -16,6 +17,7 @@ const EntryBox = (props) => {
         setDMV("Hi, I'm DMV");
         setSS("Hi, I'm SS");
         setDOS("Hi, I'm DOS");
+        setSSN(e.target.ssn.value);
 
     }
 
@@ -34,9 +36,8 @@ const EntryBox = (props) => {
                 {SS ? <p>{SS}</p> : null}
             </div>
             <div className='DOS'>
-                {DOS ? <p>{DOS}</p> : null}
+                {DOS ? <p><DataDisplay ssn = {ssNum}/>{DOS}</p> : null}
             </div>
-            {/* <DataDisplay /> */}
         </form>
     )
   }

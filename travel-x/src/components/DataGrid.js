@@ -1,9 +1,27 @@
-import React from 'react';
+import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
+import { query } from '../server';
 
-  function DataDisplay() {
+  const DataDisplay = (props) => {
+    const [data, setData] = React.useState([]);
+
+    const getData = async () => {
+      await query(props.ssn).then((res) => {
+        setData(res.DMV);
+      })
+    }
+
+    React.useEffect(() => {
+      getData();
+    });
+
     const columns = [
+      {
+        field: 'id',
+        headerName: 'ID',
+        width: 40
+      },
       {
         field: 'name',
         headerName: 'Full Name',
@@ -20,25 +38,17 @@ import { DataGrid } from '@mui/x-data-grid';
         field: 'dlNumber',
         headerName: 'Driver\'s License Number',
         type: 'number',
-        width: 110,
+        width: 185,
         editable: true,
       }
     ];
     
     const rows = [
-      { name: 'Lannister', dob: 'Cersei', dlNumber: 42 },
-      { name: 'Lannister', dob: 'Jaime', dlNumber: 45 },
-      { name: 'Stark', dob: 'Arya', dlNumber: 16 },
-      { name: 'Targaryen', dob: 'Daenerys', dlNumber: null },
-      { name: 'Snow', dob: 'Jon', dlNumber: 35 },
-      { name: 'Melisandre', dob: null, dlNumber: 150 },
-      { name: 'Clifford', dob: 'Ferrara', dlNumber: 44 },
-      { name: 'Frances', dob: 'Rossini', dlNumber: 36 },
-      { name: 'Roxie', dob: 'Harvey', dlNumber: 65 },
+      { id: 1, name: data.name, dob: data.dob, dlNumber: data.dlNumber },
     ];
 
     return (
-      <Box sx={{ height: 400, width: "50%" }}>
+      <Box sx={{ width: '33%', bgcolor: 'white', mt: 2, position: 'fixed' }}>
         <DataGrid
           rows={rows}
           columns={columns}
@@ -47,6 +57,7 @@ import { DataGrid } from '@mui/x-data-grid';
           checkboxSelection
           disableSelectionOnClick
           experimentalFeatures={{ newEditingApi: true }}
+          autoHeight
         />
       </Box>
     );
