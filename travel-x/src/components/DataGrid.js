@@ -7,21 +7,27 @@ import { query } from '../server';
     const [data, setData] = React.useState([]);
 
     const getData = async () => {
-      await query(props.ssn).then((res) => {
-        setData(res.DMV);
-      })
+      try{
+          await query(props.ssn).then((res) => {
+          setData(res.DMV);
+          })
+        }
+      catch{
+        setData("could not return any values");
+      }
     }
+  
 
     React.useEffect(() => {
       getData();
     });
 
     const columns = [
-      {
-        field: 'id',
-        headerName: 'ID',
-        width: 40
-      },
+      // {
+      //   field: 'id',
+      //   headerName: 'ID',
+      //   width: 40
+      // },
       {
         field: 'name',
         headerName: 'Full Name',
@@ -47,20 +53,31 @@ import { query } from '../server';
       { id: 1, name: data.name, dob: data.dob, dlNumber: data.dlNumber },
     ];
 
-    return (
-      <Box sx={{ width: '33%', bgcolor: 'white', mt: 2, position: 'fixed' }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-          disableSelectionOnClick
-          experimentalFeatures={{ newEditingApi: true }}
-          autoHeight
-        />
-      </Box>
-    );
+    if(typeof data != "string"){
+      return (
+        <Box sx={{ width: '33%', bgcolor: 'white', mt: 2, position: 'fixed'}}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection  = {false}
+            disableSelectionOnClick
+            experimentalFeatures={{ newEditingApi: true }}
+            autoHeight
+          />
+        </Box>
+      );  
+    }
+    else
+    {
+      return (
+        <div className='ErrorReturn'>
+          this person was not found in database
+        </div>
+      )
+    }
+    
   }
 
   export default DataDisplay;
