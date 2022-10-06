@@ -2,6 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { query } from '../server';
+import { rgbToHex } from '@mui/material';
 
   const DataDisplay = (props) => {
     const [data, setData] = React.useState([]);
@@ -55,7 +56,8 @@ import { query } from '../server';
 
     if(typeof data != "string"){
       return (
-        <Box sx={{ width: '33%', bgcolor: 'white', mt: 2, position: 'fixed'}}>
+        // bgcolor: 'rgb(28,54,100)'
+        <Box sx={{ width: '33%', bgcolor: ' white', mt: 2, position: 'fixed'}}> 
           <DataGrid
             rows={rows}
             columns={columns}

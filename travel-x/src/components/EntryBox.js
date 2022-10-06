@@ -40,7 +40,7 @@ const EntryBox = (props) => {
                 {props.text}
                 <input type="text" name="ssn" placeholder='xxx-xx-xxxx'/>
             </label>
-            <Button variant = "contained" size = "small" startIcon={<GridSearchIcon/>}>GO</Button>
+            <button variant = "contained" size = "small" startIcon={<GridSearchIcon/>}>GO</button>
             {/* <div className='DMV'>
                 {DMV ? <p>{DMV}</p> : null}
             </div>
