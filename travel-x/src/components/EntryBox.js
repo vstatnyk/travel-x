@@ -2,6 +2,8 @@
 import * as React from 'react'
 // import { query } from '../server';
 import DataDisplay from './DataGrid';
+import { Button } from '@mui/material';
+import { GridSearchIcon } from '@mui/x-data-grid';
 
 const EntryBox = (props) => {
 
@@ -38,7 +40,7 @@ const EntryBox = (props) => {
                 {props.text}
                 <input type="text" name="ssn" placeholder='xxx-xx-xxxx'/>
             </label>
-            <button>GO</button>
+            <Button variant = "contained" size = "small" startIcon={<GridSearchIcon/>}>GO</Button>
             {/* <div className='DMV'>
                 {DMV ? <p>{DMV}</p> : null}
             </div>

@@ -76,16 +76,29 @@ label {
   margin-left: 15px;
   padding: 4px;
   background-color: white;
+  margin-right: 5px;
 }
 
-button{
+.Button{
   margin-left: 5px;
 }
 
-
-h1 {
-  padding: 20px;
+#heading {
   background-color: white;
   border-bottom: 5px solid;
   margin-bottom: 3px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ColorChange {
+  flex: 5%;
+  margin-left: 5%;
+}
+
+.Title {
+  flex: 80%;
+  font-size: 20px;
+  margin-top: 12px;
+  margin-left: 15px;
 }

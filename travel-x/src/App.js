@@ -5,7 +5,7 @@ import * as React from 'react';
 
 function App() {
   return (
-    <div className="App">
+    <div className = "App">
       <Header title='Welcome to Travel X' />
       <EntryBox text = "Enter SSN Here: "/>
     </div>
