@@ -63,8 +63,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   */
-  background: url(./components/background.png) no-repeat center fixed;
-  background-size: cover;
+  /* background: url(./components/background.png) no-repeat center fixed;
+  background-size: cover; */
 }
 
 code {
@@ -75,7 +75,7 @@ code {
 label {
   margin-left: 15px;
   padding: 4px;
-  background-color: white;
+  /* background-color: white; */
   margin-right: 5px;
 }
 
@@ -84,7 +84,7 @@ label {
 }
 
 #heading {
-  background-color: white;
+  /* background-color: white; */
   border-bottom: 5px solid;
   margin-bottom: 3px;
   display: flex;

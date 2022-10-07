@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormControlLabel, Switch } from '@mui/material';
+import ToggleDarkMode from './darkModeChanger';
 
 const Header = (props) => {
   return (
@@ -11,7 +11,7 @@ const Header = (props) => {
         </header>
       </div>
       <div className='headingTab ColorChange'>
-        <FormControlLabel id='darkButton' label = 'Dark Mode' control = {<Switch/>} />
+        <ToggleDarkMode/>
       </div>
     </div>
   )
@@ -20,5 +20,7 @@ const Header = (props) => {
 Header.propTypes = {
     title: PropTypes.string.isRequired,
 }
+
+
 
 export default Header
