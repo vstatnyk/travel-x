@@ -57,7 +57,7 @@ import { query } from '../server';
     if(typeof data != "string"){
       return (
         // bgcolor: 'rgb(28,54,100)'
-        <Box sx={{ width: '33%', bgcolor: ' white', mt: 2, position: 'fixed'}}> 
+        <Box sx={{ width: '33%', bgcolor: 'white', mt: 2, position: 'fixed'}}> 
           <DataGrid
             rows={rows}
             columns={columns}
