@@ -9,7 +9,7 @@ function App() {
     <div className = "App">
       <Header title='Welcome to Travel X' />
       <EntryBox text = "Enter SSN Here: "/>
-      <PersonCard text = "sample id"/>
+      <PersonCard text = "sample id" dept = "DMV"/>
     </div>
   );
 }

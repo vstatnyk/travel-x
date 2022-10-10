@@ -9,7 +9,11 @@ import sample from "./download.png"
 
 export default function PersonCard(props) {
   return (
+    
     <Card sx={{ maxWidth: "33%" }}>
+      <Typography variant="body1" color="text.primary" fontSize={40} textAlign = "center">
+        {props.dept}
+      </Typography>
       <CardMedia
         component="img"
         height="600"
