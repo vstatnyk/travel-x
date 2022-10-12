@@ -35,11 +35,6 @@ const Item = styled(Paper)(({ theme }) => ({
     });
 
     const columns = [
-      // {
-      //   field: 'id',
-      //   headerName: 'ID',
-      //   width: 40
-      // },
       {
         field: 'name',
         headerName: 'Full Name',
