@@ -5,6 +5,7 @@ import { query } from '../server';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import LinearProgress from '@mui/material/LinearProgress';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -16,16 +17,22 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
   const DataDisplay = (props) => {
-    const [data, setData] = React.useState([]);
+    const [dmvData, setdmvData] = React.useState([]);
+    const [ssData, setssData] = React.useState([]);
+    const [dosData, setdosData] = React.useState([]);
 
     const getData = async () => {
-      try{
+      try {
           await query(props.ssn).then((res) => {
-          setData(res.DMV);
+          setdmvData(res.DMV);
+          setssData(res.SS);
+          setdosData(res.DOS);
           })
         }
-      catch{
-        setData("could not return any values");
+      catch {
+        setdmvData("could not return any values");
+        setssData("could not return any values");
+        setdosData("could not return any values");
       }
     }
   
@@ -34,12 +41,7 @@ const Item = styled(Paper)(({ theme }) => ({
       getData();
     });
 
-    const columns = [
-      // {
-      //   field: 'id',
-      //   headerName: 'ID',
-      //   width: 40
-      // },
+    const dmvColumns = [
       {
         field: 'name',
         headerName: 'Full Name',
@@ -61,8 +63,59 @@ const Item = styled(Paper)(({ theme }) => ({
       }
     ];
     
-    const rows = [
-      { id: 1, name: data.name, dob: data.dob, dlNumber: data.dlNumber },
+    const dmvRows = [
+      { id: 1, name: dmvData.name, dob: dmvData.dob, dlNumber: dmvData.dlNumber },
+    ];
+
+    const ssColumns = [
+      {
+        field: 'name',
+        headerName: 'Full Name',
+        width: 150,
+        editable: true,
+      },
+      {
+        field: 'dob',
+        headerName: 'Date Of Birth',
+        width: 150,
+        editable: true,
+      }
+    ];
+    
+    const ssRows = [
+      { id: 1, name: ssData.name, dob: ssData.dob },
+    ];
+
+    const dosColumns = [
+      {
+        field: 'name',
+        headerName: 'Full Name',
+        width: 150,
+        editable: true,
+      },
+      {
+        field: 'dob',
+        headerName: 'Date Of Birth',
+        width: 100,
+        editable: true,
+      },
+      {
+        field: 'passportNumber',
+        headerName: 'Passport Number',
+        type: 'number',
+        width: 145,
+        editable: true,
+      },
+      {
+        field: 'passportExp',
+        headerName: 'Passport Expiration Date',
+        width: 175,
+        editable: true,
+      }
+    ];
+    
+    const dosRows = [
+      { id: 1, name: dosData.name, dob: dosData.dob, passportNumber: dosData.passportNumber, passportExp: dosData.passportExp },
     ];
 
     if(typeof data != "string"){
@@ -73,8 +126,13 @@ const Item = styled(Paper)(({ theme }) => ({
             <Grid item xs direction="row">
               <Item>
                 <DataGrid
-                  rows={rows}
-                  columns={columns}
+                  components={{
+                    LoadingOverlay: LinearProgress,
+
+                  }}
+                  loading = {!dmvData.length}
+                  rows={dmvRows}
+                  columns={dmvColumns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
@@ -87,8 +145,8 @@ const Item = styled(Paper)(({ theme }) => ({
             <Grid item xs={4}>
               <Item>
                 <DataGrid
-                  rows={rows}
-                  columns={columns}
+                  rows={ssRows}
+                  columns={ssColumns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
@@ -101,8 +159,8 @@ const Item = styled(Paper)(({ theme }) => ({
             <Grid item xs>
               <Item>
                 <DataGrid
-                  rows={rows}
-                  columns={columns}
+                  rows={dosRows}
+                  columns={dosColumns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
