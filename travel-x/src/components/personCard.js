@@ -10,8 +10,8 @@ import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import { query } from '../server';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
+// import Paper from '@mui/material/Paper';
+// import { styled } from '@mui/material/styles';
 // import { query } from '../server';
 
 export default function PersonCard(props) {
