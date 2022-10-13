@@ -5,7 +5,6 @@ import { query } from '../server';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
-import LinearProgress from '@mui/material/LinearProgress';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -42,6 +41,11 @@ const Item = styled(Paper)(({ theme }) => ({
     });
 
     const dmvColumns = [
+      // {
+      //   field: 'id',
+      //   headerName: 'ID',
+      //   width: 40
+      // },
       {
         field: 'name',
         headerName: 'Full Name',
@@ -126,11 +130,6 @@ const Item = styled(Paper)(({ theme }) => ({
             <Grid item xs direction="row">
               <Item>
                 <DataGrid
-                  components={{
-                    LoadingOverlay: LinearProgress,
-
-                  }}
-                  loading = {!dmvData.length}
                   rows={dmvRows}
                   columns={dmvColumns}
                   pageSize={5}
