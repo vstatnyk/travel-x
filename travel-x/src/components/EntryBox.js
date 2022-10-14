@@ -19,7 +19,7 @@ const EntryBox = () => {
     }
 
     return (
-        <Container sx={{ ml: 0, mt: 2, height: 4}}>
+        <Container sx={{ ml: -3, mt: 2, height: 4}}>
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                 <InputMask
                     mask="999-99-9999"
