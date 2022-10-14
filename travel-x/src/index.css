@@ -102,3 +102,12 @@ label {
   margin-top: 12px;
   margin-left: 15px;
 }
+
+.TextBox{
+  margin-top: 50px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

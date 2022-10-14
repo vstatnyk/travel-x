@@ -8,8 +8,8 @@ function App() {
   return (
     <div className = "App">
       <Header title='Welcome to Travel X' />
-      <EntryBox text = "Enter SSN Here: "/>
-      <PersonCard text = "sample id" dept = "DMV"/>
+      <EntryBox className="TextBox"text = "Enter SSN Here: "/>
+      {/* <PersonCard text = "sample id" dept = "DMV"/> */}
     </div>
   );
 }
