@@ -19,30 +19,31 @@ const EntryBox = () => {
     }
 
     return (
-        <Container>
+        <Container sx={{ ml: -3, mt: 2, height: 4 }}>
             <div className='TextBox'>
-            <form noValidate autoComplete='off' onSubmit={handleSubmit}>
-                <InputMask
-                    mask="999-99-9999"
-                    maskChar= ""
-                    onChange={(e) => setSSN(e.target.value)}
-                >
-                    {() => <TextField
-                        variant="filled"
-                        placeholder='xxx-xx-xxxx'
-                        label="Social Security Number"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position='end'>
-                                    <IconButton edge="end" color='primary' type='submit'>
-                                        <GridSearchIcon />
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />}
-                </InputMask>
-            </form>
+                <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+                    <InputMask
+                        mask="999-99-9999"
+                        maskChar= ""
+                        onChange={(e) => setSSN(e.target.value)}
+                    >
+                        {() => <TextField
+                            sx={{ ml: 105, mb: 1 }}
+                            variant="filled"
+                            placeholder='xxx-xx-xxxx'
+                            label="Social Security Number"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position='end'>
+                                        <IconButton edge="end" color='primary' type='submit'>
+                                            <GridSearchIcon />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />}
+                    </InputMask>
+                </form>
             </div>
             <div className='ssNum'>
                     {show ? <p><DataDisplay ssn  = {value}/></p> : null}
