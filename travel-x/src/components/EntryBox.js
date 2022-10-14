@@ -1,30 +1,53 @@
 import * as React from 'react'
+import InputMask from 'react-input-mask';
 import DataDisplay from './DataGrid';
-import { Button } from '@mui/material';
 import { GridSearchIcon } from '@mui/x-data-grid';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
 
-const EntryBox = (props) => {
-
+const EntryBox = () => {
     const [ssNum, setSSN] = React.useState(null);
-    
-    const handleClick = async (e) => {
+    const [value, setValue] = React.useState(null);
+    const [show, setShow] = React.useState(false);
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setSSN(e.target.ssn.value);
+        setShow(true);
+        setValue(ssNum);
     }
 
-
     return (
-        <form onSubmit={handleClick}>
-            <label>
-                {props.text}
-                <input type="text" name="ssn" placeholder='xxx-xx-xxxx'/>
-            </label>
-            <Button variant = "contained" size = "small" startIcon={<GridSearchIcon/>} type = "click">Search</Button>
-            <div className='ssNum'>
-                {ssNum ? <p><DataDisplay ssn  = {ssNum}/></p> : null}
-            </div>
-        </form>
-    )
+        <Container sx={{ ml: 0, mt: 2, height: 4}}>
+            <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+                <InputMask
+                    mask="999-99-9999"
+                    maskChar= ""
+                    onChange={(e) => setSSN(e.target.value)}
+                >
+                    {() => <TextField
+                        sx={{ ml: 105}}
+                        variant="filled"
+                        placeholder='xxx-xx-xxxx'
+                        label="Social Security Number"
+                        InputProps={{
+                            endAdornment: (
+                                <InputAdornment position='end'>
+                                    <IconButton edge="end" color='primary' type='submit'>
+                                        <GridSearchIcon />
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
+                        }}
+                    />}
+                </InputMask>
+                <div className='ssNum'>
+                    {show ? <p><DataDisplay ssn  = {value}/></p> : null}
+                </div>
+            </form>
+        </Container>
+    );
   }
 
   

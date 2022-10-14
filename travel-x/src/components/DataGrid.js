@@ -5,6 +5,7 @@ import { query } from '../server';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
+import { LinearProgress } from '@mui/material';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -41,11 +42,6 @@ const Item = styled(Paper)(({ theme }) => ({
     });
 
     const dmvColumns = [
-      // {
-      //   field: 'id',
-      //   headerName: 'ID',
-      //   width: 40
-      // },
       {
         field: 'name',
         headerName: 'Full Name',
@@ -125,13 +121,17 @@ const Item = styled(Paper)(({ theme }) => ({
     if(typeof data != "string"){
       return (
         // bgcolor: 'rgb(28,54,100)'
-        <Box sx={{ width: '100%', bgcolor: 'white', mt: 2, position: 'fixed', flexGrow: 1 }}>
-          <Grid container spacing={1}>
+        <Box sx={{ paddingLeft: 6, paddingRight: 6, width: '100%', bgcolor: 'white', mt: 3, position: 'fixed', flexGrow: 1 }}>
+          <Grid container spacing={2}>
             <Grid item xs direction="row">
               <Item>
                 <DataGrid
                   rows={dmvRows}
                   columns={dmvColumns}
+                  components={{
+                    LoadingOverlay: LinearProgress
+                  }}
+                  loading = {dmvData.isloading}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
@@ -146,6 +146,10 @@ const Item = styled(Paper)(({ theme }) => ({
                 <DataGrid
                   rows={ssRows}
                   columns={ssColumns}
+                  components={{
+                    LoadingOverlay: LinearProgress
+                  }}
+                  loading = {ssData.isloading}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
@@ -160,6 +164,10 @@ const Item = styled(Paper)(({ theme }) => ({
                 <DataGrid
                   rows={dosRows}
                   columns={dosColumns}
+                  components={{
+                    LoadingOverlay: LinearProgress
+                  }}
+                  loading = {dosData.isloading}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
                   checkboxSelection  = {false}
