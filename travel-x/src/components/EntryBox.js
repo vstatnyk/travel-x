@@ -19,7 +19,8 @@ const EntryBox = () => {
     }
 
     return (
-        <Container sx={{ ml: -3, mt: 2, height: 4}}>
+        <Container>
+            <div className='TextBox'>
             <form noValidate autoComplete='off' onSubmit={handleSubmit}>
                 <InputMask
                     mask="999-99-9999"
@@ -27,7 +28,6 @@ const EntryBox = () => {
                     onChange={(e) => setSSN(e.target.value)}
                 >
                     {() => <TextField
-                        sx={{ ml: 105}}
                         variant="filled"
                         placeholder='xxx-xx-xxxx'
                         label="Social Security Number"
@@ -42,10 +42,11 @@ const EntryBox = () => {
                         }}
                     />}
                 </InputMask>
-                <div className='ssNum'>
-                    {show ? <p><DataDisplay ssn  = {value}/></p> : null}
-                </div>
             </form>
+            </div>
+            <div className='ssNum'>
+                    {show ? <p><DataDisplay ssn  = {value}/></p> : null}
+            </div>
         </Container>
     );
   }
