@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import EntryBox from "./components/EntryBox";
 // import background from "./components/background.png";
-import PersonCard from "./components/personCard";
+//import PersonCard from "./components/personCard";
 import * as React from 'react';
 
 function App() {
