@@ -135,7 +135,6 @@ const DataDisplay = (props) => {
           paddingLeft: 10,
           paddingRight: 10,
           width: "100%",
-          bgcolor: "white",
           mt: 3,
           position: "fixed",
           flexGrow: 1,
