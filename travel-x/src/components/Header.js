@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToggleDarkMode from './darkModeChanger';
+import { DarkModeButton } from '../App';
 
 const Header = (props) => {
   return (
@@ -11,7 +11,7 @@ const Header = (props) => {
         </header>
       </div>
       <div className='headingTab ColorChange'>
-        <ToggleDarkMode/>
+        <DarkModeButton/>
       </div>
     </div>
   )
