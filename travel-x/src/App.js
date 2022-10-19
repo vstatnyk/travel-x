@@ -40,7 +40,7 @@ function App() {
       <ThemeProvider theme = {theme} >
         <CssBaseline/>
         <div className = "App">
-          <Header title='Welcome to Travel X' />
+          <Header title='Travel X' />
           <EntryBox text = "Enter SSN Here: "/>
         </div>
       </ThemeProvider>

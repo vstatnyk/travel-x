@@ -92,19 +92,21 @@ label {
 }
 
 .ColorChange {
+  margin-top: 12px;
   flex: 5%;
   margin-left: 5%;
 }
 
 .Title {
+  font-weight: bold;
   flex: 80%;
-  font-size: 20px;
+  font-size: 40px;
   margin-top: 12px;
   margin-left: 15px;
 }
 
 .TextBox{
-  margin-top: 5%;
+  margin-top: 2%;
   height: 100%;
   width: 100%;
   display: flex;
@@ -126,4 +128,12 @@ label {
 .Position{
   height: 100%;
   width: 100%;
+}
+
+.DepName{
+  font-weight: bold;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

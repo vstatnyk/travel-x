@@ -26,7 +26,7 @@ const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
   const [dosData, setdosData] = React.useState([]);
-  const [data, setData] = React.useState(false);
+  const [data, setData] = React.useState(null);
 
   const getData = async () => {
     try {
@@ -145,6 +145,9 @@ const DataDisplay = (props) => {
       >
         <Grid container spacing={2}>
           <Grid item xs direction="row">
+            <div className="DepName">
+              Department of Motor Vehicles
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -163,7 +166,7 @@ const DataDisplay = (props) => {
                 <Typography variant="body2" color="text.primary">
                   {props.text}
                   <Box>
-                    <Item>
+                    <Item>    
                       <DataGrid
                         rows={dmvRows}
                         columns={dmvColumns}
@@ -188,6 +191,9 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs={4}>
+            <div className="DepName">
+              Social Security
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -198,9 +204,9 @@ const DataDisplay = (props) => {
                 {props.dept}
               </Typography>
               <CardMedia className = "position"
-                component="img"
-                image={sample}
-                alt="id_photo"
+                // component="img"
+                // image={sample}
+                // alt="id_photo"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
@@ -231,6 +237,9 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs>
+            <div className="DepName">
+              Department Of State 
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -277,7 +286,7 @@ const DataDisplay = (props) => {
       </Box>
     );
   } 
-  else {
+  else if (data === false) {
     return (
       <div className="FailPerson">
         This person was not found in the database
@@ -285,6 +294,7 @@ const DataDisplay = (props) => {
       </div>
     );
   }
+
 };
 
 export default DataDisplay;
