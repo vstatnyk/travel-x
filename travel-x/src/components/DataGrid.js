@@ -27,6 +27,7 @@ const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
   const [dosData, setdosData] = React.useState([]);
+  const [data, setData] = React.useState(false);
 
   const getData = async () => {
     try {
@@ -34,8 +35,10 @@ const DataDisplay = (props) => {
         setdmvData(res.DMV);
         setssData(res.SS);
         setdosData(res.DOS);
+        setData(true)
       });
     } catch {
+      setData(false)
       setdmvData("could not return any values");
       setssData("could not return any values");
       setdosData("could not return any values");
@@ -127,17 +130,17 @@ const DataDisplay = (props) => {
     },
   ];
 
-  if (typeof data != "string") {
+  if (data) {
     return (
       // bgcolor: 'rgb(28,54,100)'
       <Box
         sx={{
-          paddingLeft: 10,
-          paddingRight: 10,
+          // paddingLeft: "1%",
+          // paddingRight: "1%",
           width: "100%",
           mt: 3,
-          position: "fixed",
-          flexGrow: 1,
+          position: "sticky",
+          flexGrow: 29,
         }}
       >
         <Grid container spacing={2}>
@@ -276,9 +279,10 @@ const DataDisplay = (props) => {
         </Grid>
       </Box>
     );
-  } else {
+  } 
+  else {
     return (
-      <div className="ErrorReturn">this person was not found in database</div>
+      <div className="ErrorReturn">This person was not found in database</div>
     );
   }
 };

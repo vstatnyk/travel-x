@@ -41,8 +41,7 @@ function App() {
         <CssBaseline/>
         <div className = "App">
           <Header title='Welcome to Travel X' />
-          <EntryBox className="TextBox"text = "Enter SSN Here: "/>
-          {/* <PersonCard text = "sample id" dept = "DMV"/> */}
+          <EntryBox text = "Enter SSN Here: "/>
         </div>
       </ThemeProvider>
     </DarkModeContext.Provider>

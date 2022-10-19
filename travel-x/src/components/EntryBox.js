@@ -19,30 +19,32 @@ const EntryBox = () => {
     }
 
     return (
-        <Container sx={{ ml: -3, mt: 2, height: 4 }}>
-            <div className='TextBox'>
+        <Container >
+            <div>
                 <form noValidate autoComplete='off' onSubmit={handleSubmit}>
+                    <div className='TextBox'>
                     <InputMask
                         mask="999-99-9999"
                         maskChar= ""
                         onChange={(e) => setSSN(e.target.value)}
                     >
                         {() => <TextField
-                            sx={{ ml: 105, mb: 1 }}
+                            sx={{width: 300}}
                             variant="filled"
                             placeholder='xxx-xx-xxxx'
-                            label="Social Security Number"
+                            label="Enter Social Security Number"
                             InputProps={{
-                                endAdornment: (
-                                    <InputAdornment position='end'>
-                                        <IconButton edge="end" color='primary' type='submit'>
-                                            <GridSearchIcon />
-                                        </IconButton>
-                                    </InputAdornment>
-                                ),
+                            endAdornment: (
+                                <InputAdornment position='end'>
+                                    <IconButton  edge="end" color='primary' type='submit'>
+                                        <GridSearchIcon />
+                                    </IconButton>
+                                </InputAdornment>
+                            ),
                             }}
                         />}
                     </InputMask>
+                    </div>
                 </form>
             </div>
             <div className='ssNum'>
