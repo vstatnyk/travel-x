@@ -13,6 +13,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import sample from "./download.png";
+import { red } from "@mui/material/colors";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -135,12 +136,13 @@ const DataDisplay = (props) => {
       // bgcolor: 'rgb(28,54,100)'
       <Box
         sx={{
-          // paddingLeft: "1%",
-          // paddingRight: "1%",
+          paddingLeft: "1%",
+          paddingRight: "1%",
           width: "100%",
           mt: 3,
-          position: "sticky",
-          flexGrow: 29,
+          position: "absolute",
+          right:0,
+          flexGrow: 100
         }}
       >
         <Grid container spacing={2}>
@@ -154,9 +156,8 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
-                height="500"
                 image={sample}
                 alt="id_photo"
               />
@@ -172,7 +173,7 @@ const DataDisplay = (props) => {
                           LoadingOverlay: LinearProgress,
                         }}
                         loading={dmvData.isloading}
-                        pageSize={5}
+                        pageSize={100}
                         rowsPerPageOptions={[5]}
                         checkboxSelection={false}
                         disableSelectionOnClick
@@ -198,9 +199,8 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
-                height="500"
                 image={sample}
                 alt="id_photo"
               />
@@ -242,9 +242,8 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
-                height="500"
                 image={sample}
                 alt="id_photo"
               />
@@ -283,7 +282,7 @@ const DataDisplay = (props) => {
   else {
     return (
       <div className="FailPerson">
-        This person was not found in database
+        This person was not found in the database
         :(
       </div>
     );
