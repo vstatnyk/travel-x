@@ -282,7 +282,10 @@ const DataDisplay = (props) => {
   } 
   else {
     return (
-      <div className="ErrorReturn">This person was not found in database</div>
+      <div className="FailPerson">
+        This person was not found in database
+        :(
+      </div>
     );
   }
 };
