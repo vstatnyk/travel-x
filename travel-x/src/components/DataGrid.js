@@ -13,8 +13,6 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import sample from "./download.png";
-import { red } from "@mui/material/colors";
-//import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
