@@ -13,6 +13,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import sample from "./download.png";
+import { getImage } from "../GetImage";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -28,17 +29,21 @@ const DataDisplay = (props) => {
   const [ssData, setssData] = React.useState([]);
   const [dosData, setdosData] = React.useState([]);
   const [data, setData] = React.useState(false);
+  const [dmvImageUrl, setdmvImageUrl] = React.useState([]);
+  const [dosImageUrl, setdosImageUrl] = React.useState([]);
 
   const getData = async () => {
     try {
-      await query(props.ssn).then((res) => {
+      await query(props.ssn).then(async (res) => {
         setdmvData(res.DMV);
         setssData(res.SS);
         setdosData(res.DOS);
-        setData(true)
+        setData(true);
+        setdmvImageUrl(await getImage(res.DMV.imageId));
+        setdosImageUrl(await getImage(res.DOS.imageId));
       });
     } catch {
-      setData(false)
+      setData(false);
       setdmvData("could not return any values");
       setssData("could not return any values");
       setdosData("could not return any values");
@@ -157,7 +162,7 @@ const DataDisplay = (props) => {
               <CardMedia
                 component="img"
                 height="500"
-                image={sample}
+                image={dmvImageUrl}
                 alt="id_photo"
               />
               <CardContent>
@@ -201,7 +206,7 @@ const DataDisplay = (props) => {
               <CardMedia
                 component="img"
                 height="500"
-                image={sample}
+                image={dosImageUrl}
                 alt="id_photo"
               />
               <CardContent>
