@@ -1,26 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import {Nav, NavLink, NavMenu} from "./NavbarElements";
 import { DarkModeButton } from '../App';
 
-const Header = (props) => {
-  return (
-    <div id='heading'>
-      <div className='headingTab Title'>
-        <header>
-            <h1>{props.title}</h1>
-        </header>
-      </div>
-      <div className='headingTab ColorChange'>
-        <DarkModeButton/>
-      </div>
-    </div>
-  )
-}
+const Navbar = () => {
+    return (
+        
+        <>
+            <Nav>
+                <NavMenu>
+                    <div className='headingTab Title'>
+                        <header>
+                            <h1>TravelX</h1>
+                        </header>
+                    </div>
+                    <NavLink to="/Login" activeStyle>
+                        Login
+                    </NavLink>
+                    <NavLink to="/Search" activeStyle>
+                        Search
+                    </NavLink>
+                    <NavLink to="/About" activeStyle>
+                        About
+                    </NavLink>
+                    <NavLink to="/Contact" activeStyle>
+                        Contact
+                    </NavLink>
+                    <DarkModeButton />
+                </NavMenu>
+            </Nav>
+        </>
+    );
+};
 
-Header.propTypes = {
-    title: PropTypes.string.isRequired,
-}
-
-
-
-export default Header
+export default Navbar;
