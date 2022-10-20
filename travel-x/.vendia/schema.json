@@ -25,6 +25,10 @@
               "dlNumber": {
                 "description": "Immigrant's dlNumber",
                 "type": "string"
+              },
+              "imageId": {
+                "description": "ID for the Immigrant's image",
+                "type": "string"
               }
             }
           },
@@ -64,6 +68,10 @@
               },
               "passportExp": {
                 "description": "Immigrant's Passport Expiration",
+                "type": "string"
+              },
+              "imageId": {
+                "description": "ID for the Immigrant's image",
                 "type": "string"
               }
             }
