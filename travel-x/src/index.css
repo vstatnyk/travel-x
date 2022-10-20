@@ -128,6 +128,13 @@ label {
 .Position{
   height: 100%;
   width: 100%;
+  margin-top: 2%;
+  font-weight: bold;
+  font-size: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .DepName{
