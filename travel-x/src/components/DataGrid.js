@@ -38,9 +38,10 @@ const DataDisplay = (props) => {
         setdmvData(res.DMV);
         setssData(res.SS);
         setdosData(res.DOS);
-        setData(true);
+        console.log(res.DMV.imageId)
         setdmvImageUrl(await getImage(res.DMV.imageId));
         setdosImageUrl(await getImage(res.DOS.imageId));
+        setData(true);
       });
     } catch {
       setData(false);
