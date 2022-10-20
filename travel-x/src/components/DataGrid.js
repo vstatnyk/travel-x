@@ -209,12 +209,6 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia className = "position"
-                component="img"
-                height="500"
-                image={dosImageUrl}
-                alt="Image Unavailable"
-              />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
                   {props.text}
@@ -258,8 +252,8 @@ const DataDisplay = (props) => {
               </Typography>
               <CardMedia className = "position"
                 component="img"
-                image={sample}
-                alt= "image Unavailable"
+                image={dosImageUrl}
+                alt="Image Unavailable"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
