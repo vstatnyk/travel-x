@@ -52,7 +52,7 @@ const DataDisplay = (props) => {
 
   React.useEffect(() => {
     getData();
-  });
+  }, []);
 
   const dmvColumns = [
     {
