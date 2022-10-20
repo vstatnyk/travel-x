@@ -28,7 +28,7 @@ const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
   const [dosData, setdosData] = React.useState([]);
-  const [data, setData] = React.useState(false);
+  const [data, setData] = React.useState(null);
   const [dmvImageUrl, setdmvImageUrl] = React.useState([]);
   const [dosImageUrl, setdosImageUrl] = React.useState([]);
 
@@ -140,16 +140,20 @@ const DataDisplay = (props) => {
       // bgcolor: 'rgb(28,54,100)'
       <Box
         sx={{
-          // paddingLeft: "1%",
-          // paddingRight: "1%",
+          paddingLeft: "1%",
+          paddingRight: "1%",
           width: "100%",
           mt: 3,
-          position: "sticky",
-          flexGrow: 29,
+          position: "absolute",
+          right:0,
+          flexGrow: 100
         }}
       >
         <Grid container spacing={2}>
           <Grid item xs direction="row">
+            <div className="DepName">
+              Department of Motor Vehicles
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -159,17 +163,16 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
-                height="500"
                 image={dmvImageUrl}
-                alt="id_photo"
+                alt= "image Unavailable"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
                   {props.text}
                   <Box>
-                    <Item>
+                    <Item>    
                       <DataGrid
                         rows={dmvRows}
                         columns={dmvColumns}
@@ -177,7 +180,7 @@ const DataDisplay = (props) => {
                           LoadingOverlay: LinearProgress,
                         }}
                         loading={dmvData.isloading}
-                        pageSize={5}
+                        pageSize={100}
                         rowsPerPageOptions={[5]}
                         checkboxSelection={false}
                         disableSelectionOnClick
@@ -194,6 +197,9 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs={4}>
+            <div className="DepName">
+              Social Security
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -203,11 +209,11 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
                 height="500"
                 image={dosImageUrl}
-                alt="id_photo"
+                alt="Image Unavailable"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
@@ -238,6 +244,9 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs>
+            <div className="DepName">
+              Department Of State 
+            </div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -247,11 +256,10 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia
+              <CardMedia className = "position"
                 component="img"
-                height="500"
                 image={sample}
-                alt="id_photo"
+                alt= "image Unavailable"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
@@ -285,14 +293,15 @@ const DataDisplay = (props) => {
       </Box>
     );
   } 
-  else {
+  else if (data === false) {
     return (
       <div className="FailPerson">
-        This person was not found in database
+        This person was not found in the database
         :(
       </div>
     );
   }
+
 };
 
 export default DataDisplay;
