@@ -8,11 +8,13 @@ const Navbar = () => {
         <>
             <Nav>
                 <NavMenu>
-                    <div className='headingTab Title'>
-                        <header>
-                            <h1>TravelX</h1>
-                        </header>
-                    </div>
+                    <NavLink to="/" activeStyle>
+                        <div className='headingTab Title'>
+                            <header>
+                                <h1>TravelX</h1>
+                            </header>
+                        </div>
+                    </NavLink>
                     <NavLink to="/Login" activeStyle>
                         Login
                     </NavLink>
@@ -25,7 +27,9 @@ const Navbar = () => {
                     <NavLink to="/Contact" activeStyle>
                         Contact
                     </NavLink>
-                    <DarkModeButton />
+                    <div className="DarkModeButton">
+                        <DarkModeButton />
+                    </div>
                 </NavMenu>
             </Nav>
         </>

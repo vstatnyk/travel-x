@@ -83,28 +83,6 @@ label {
   margin-left: 5px;
 }
 
-#heading {
-  /* background-color: white; */
-  border-bottom: 5px solid;
-  margin-bottom: 3px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.ColorChange {
-  margin-top: 12px;
-  flex: 5%;
-  margin-left: 5%;
-}
-
-.Title {
-  font-weight: bold;
-  flex: 80%;
-  font-size: 40px;
-  margin-top: 12px;
-  margin-left: 15px;
-}
-
 .TextBox{
   margin-top: 2%;
   height: 100%;
@@ -143,4 +121,21 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.DarkModeButton{
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  margin-left: 155%;
+  white-space: nowrap;
+}
+
+.Title {
+  font-weight: bold;
+  flex: 80%;
+  font-size: 40px;
+  padding-left: 15px;
+  margin-right: 20px;
+  color: #fff;
 }
