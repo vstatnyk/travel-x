@@ -1,6 +1,7 @@
 import React from "react";
 import {Nav, NavLink, NavMenu} from "./NavbarElements";
 import { DarkModeButton } from '../App';
+import AuthNav from "./authNavigation";
 
 const Navbar = () => {
     return (
@@ -15,9 +16,6 @@ const Navbar = () => {
                             </header>
                         </div>
                     </NavLink>
-                    <NavLink to="/Login" activeStyle>
-                        Login
-                    </NavLink>
                     <NavLink to="/Search" activeStyle>
                         Search
                     </NavLink>
@@ -27,6 +25,10 @@ const Navbar = () => {
                     <NavLink to="/Contact" activeStyle>
                         Contact
                     </NavLink>
+                    <NavLink to="/Profile" activeStyle>
+                        Profile
+                    </NavLink>
+                    <AuthNav />
                     <div className="DarkModeButton">
                         <DarkModeButton />
                     </div>
