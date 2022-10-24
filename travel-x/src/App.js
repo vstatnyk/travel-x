@@ -1,7 +1,7 @@
 // import background from "./components/background.png";
 //import PersonCard from "./components/personCard";
 import * as React from 'react';
-import { CssBaseline, ThemeProvider, createTheme, FormControlLabel, Switch } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme, FormControlLabel, Switch, AppBar } from "@mui/material";
 import Navbar from "./components/Header";
 import { Routes, Route} from 'react-router-dom';
 import Search from "./pages/Search";
@@ -12,6 +12,7 @@ import Profile from './pages/Profile';
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from './components/Loading';
 import ProtectedRoute from './auth/protectedRoute';
+import ResponsiveAppBar from './components/AppBar';
 
 const DarkModeContext = React.createContext({toggleDarkMode: () => {} });
 
@@ -53,6 +54,7 @@ function App() {
     <DarkModeContext.Provider value={darkMode}>
       <ThemeProvider theme = {theme} >
         <CssBaseline/>
+        <ResponsiveAppBar/>
           <Navbar/>
           <Routes>
             <Route exact path='/' exact element={<Home/>} />
