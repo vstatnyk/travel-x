@@ -16,8 +16,8 @@ const EntryBox = () => {
         e.preventDefault();
         setShow(true);
         setValue(ssNum);
+        //console.log(ssNum);
     }
-
     return (
         <Container >
             <div>
@@ -48,6 +48,7 @@ const EntryBox = () => {
                 </form>
             </div>
             <div className='ssNum'>
+
                     {show ? <p><DataDisplay ssn  = {value}/></p> : null}
             </div>
         </Container>

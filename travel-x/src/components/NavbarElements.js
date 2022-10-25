@@ -3,10 +3,10 @@ import styled from "styled-components"
 
 export const Nav = styled.nav`
     background: #046b99;
-    display: flex;
+    //display: flex;
     justify-content: space-between;
     height 90px;
-    padding: 10px;
+    //padding: 10px;
     font-size: 25px;
 `;
 

@@ -126,8 +126,9 @@ label {
 .DarkModeButton{
   color: #fff;
   justify-content: center;
+  margin-left: 88%;
+  position: absolute;
   align-items: center;
-  margin-left: 155%;
   white-space: nowrap;
 }
 
