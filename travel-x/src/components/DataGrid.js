@@ -12,7 +12,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import sample from "./download.png";
 import { getImage } from "../GetImage";
 //import { rgbToHex } from '@mui/material';
 
@@ -145,15 +144,13 @@ const DataDisplay = (props) => {
           width: "100%",
           mt: 3,
           position: "absolute",
-          right:0,
-          flexGrow: 100
+          right: 0,
+          flexGrow: 100,
         }}
       >
         <Grid container spacing={2}>
           <Grid item xs direction="row">
-            <div className="DepName">
-              Department of Motor Vehicles
-            </div>
+            <div className="DepName">Department of Motor Vehicles</div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -163,16 +160,17 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia className = "position"
+              <CardMedia
+                className="position"
                 component="img"
                 image={dmvImageUrl}
-                alt= "image Unavailable"
+                alt="image Unavailable"
               />
               <CardContent>
                 <Typography variant="body2" color="text.primary">
                   {props.text}
                   <Box>
-                    <Item>    
+                    <Item>
                       <DataGrid
                         rows={dmvRows}
                         columns={dmvColumns}
@@ -197,9 +195,7 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs={4}>
-            <div className="DepName">
-              Social Security
-            </div>
+            <div className="DepName">Social Security</div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -238,9 +234,7 @@ const DataDisplay = (props) => {
             </Card>
           </Grid>
           <Grid item xs>
-            <div className="DepName">
-              Department Of State 
-            </div>
+            <div className="DepName">Department Of State</div>
             <Card sx={{ maxWidth: "100%" }}>
               <Typography
                 variant="body1"
@@ -250,7 +244,8 @@ const DataDisplay = (props) => {
               >
                 {props.dept}
               </Typography>
-              <CardMedia className = "position"
+              <CardMedia
+                className="position"
                 component="img"
                 image={dosImageUrl}
                 alt="Image Unavailable"
@@ -286,16 +281,13 @@ const DataDisplay = (props) => {
         </Grid>
       </Box>
     );
-  } 
-  else if (data === false) {
+  } else if (data === false) {
     return (
       <div className="FailPerson">
-        This person was not found in the database
-        :(
+        This person was not found in the database :(
       </div>
     );
   }
-
 };
 
 export default DataDisplay;
