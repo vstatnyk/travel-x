@@ -1,8 +1,7 @@
 // import background from "./components/background.png";
 //import PersonCard from "./components/personCard";
 import * as React from 'react';
-import { CssBaseline, ThemeProvider, createTheme, FormControlLabel, Switch, AppBar } from "@mui/material";
-import Navbar from "./components/Header";
+import { CssBaseline, ThemeProvider, createTheme, FormControlLabel, Switch } from "@mui/material";
 import { Routes, Route} from 'react-router-dom';
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
@@ -55,9 +54,8 @@ function App() {
       <ThemeProvider theme = {theme} >
         <CssBaseline/>
         <ResponsiveAppBar/>
-          <Navbar/>
           <Routes>
-            <Route exact path='/' exact element={<Home/>} />
+            <Route exact path='/' element={<Home/>} />
             <Route path='/Search' element={<Search/>} />
             <Route path='/Contact' element={<Contact/>} />
             <Route path='/About' element={<About/>} />

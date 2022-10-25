@@ -13,14 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
-import { useAuth0 } from '@auth0/auth0-react';
 import AuthenticationButton from './authButton';
+import { DarkModeButton } from '../App';
 
-const pages = ['About', 'Contact'];
-const settings = ['Profile', 'Logout'];
+const pages = ['Search', 'About', 'Contact'];
 
 function ResponsiveAppBar() {
-  const { loginWithRedirect } = useAuth0();
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -40,7 +38,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ backgroundColor: "BurlyWood" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -54,12 +52,12 @@ function ResponsiveAppBar() {
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            LOGO
+            HOME
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -134,7 +132,9 @@ function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-
+          <div className="DarkModeButton">
+            <DarkModeButton />
+          </div>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Account">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -155,18 +155,18 @@ function ResponsiveAppBar() {
                 horizontal: 'right',
               }}
               open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              onClose={(handleCloseUserMenu)}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    if (key == Profile))
-                    <AuthenticationButton>
-                        {setting}
-                    </AuthenticationButton>
-                  </Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">
+                <Link style={{ textDecoration: "none", color: "black"}} to={`/Profile`}>
+                  Profile
+                </Link>
+                </Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu} style={{ color: "black" }}>
+                <AuthenticationButton />
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
