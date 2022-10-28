@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import AuthenticationButton from "./authButton";
 import { DarkModeButton } from "../App";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { palette } from "@mui/system";
 
 const pages = ["Search", "About", "Contact"];
 
@@ -169,7 +170,7 @@ function ResponsiveAppBar() {
               <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
                   <Link
-                    style={{ textDecoration: "none", color: "black" }}
+                    style={{ textDecoration: "none"}}
                     to={`/Profile`}
                   >
                     Profile
@@ -178,7 +179,6 @@ function ResponsiveAppBar() {
               </MenuItem>
               <MenuItem
                 onClick={handleCloseUserMenu}
-                style={{ color: "black" }}
               >
                 <AuthenticationButton />
               </MenuItem>

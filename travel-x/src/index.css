@@ -141,5 +141,9 @@ label {
   color: #fff;
 }
 
+a {
+  color: inherit;
+}
+
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
