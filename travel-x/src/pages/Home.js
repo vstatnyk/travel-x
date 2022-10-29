@@ -1,14 +1,15 @@
-import React from "react";
+import { Container } from '@mui/system';
+import * as React from 'react';
 import background from ".././components/background.png";
 
 const Home = () => {
   return (
-      <div>
+      <Container maxWidth="lg">
         <img src={background} alt="TravelX Logo" className="logoHome"></img>
         <div className="homeText">
           <h1>Welcome to TravelX</h1>
         </div>
-      </div>
+      </Container>
   );
 };
 
