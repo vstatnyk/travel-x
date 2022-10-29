@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 import AuthenticationButton from "./authButton";
 import { DarkModeButton } from "../App";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { palette } from "@mui/system";
 
 const pages = ["Search", "About", "Contact"];
 

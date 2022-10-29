@@ -145,5 +145,18 @@ a {
   color: inherit;
 }
 
+.logoHome {
+  padding-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.homeText {
+  padding-top: 30px;
+  text-align: center;
+  font-size: 90px;
+}
+
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
