@@ -158,5 +158,12 @@ a {
   font-size: 90px;
 }
 
+.ContactHeader {
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+}
+
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
