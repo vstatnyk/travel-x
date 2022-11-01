@@ -1,6 +1,6 @@
 import { Container } from '@mui/system';
 import * as React from 'react';
-import background from ".././components/background.png";
+import background from ".././components/images/background.png";
 
 const Home = () => {
   return (
