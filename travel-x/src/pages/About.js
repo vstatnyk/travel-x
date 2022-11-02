@@ -5,7 +5,7 @@ import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import img1 from ".././components/images/Portrait_Placeholder.png";
 import brianImg from "../components/images/brianbeilbypic.jpg";
 import coltonImg from "../components/images/colton_carvalho.jpg";
-
+import moshImg from "../components/images/Resized Photo for Profile Picture.jpg";
 const About = () => {
   return (
     <Container maxWidth="xl">
@@ -60,16 +60,29 @@ const About = () => {
           <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
-                image={img1}
+                height="350"
+                image={moshImg}
                 alt="place holder"
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Test 2
+                  Moshley Marcelo
                 </Typography>
                 <Typography variant="body2">
-                  This clown did some coding. What a nerd
+                  I am a CSU Sacramento student majoring in Computer Science. So far most of my
+                  experience has come from recent coursework I have completed in the past. One project
+                  involved the use of UNIX, I made a decision making game based off of
+                  the Oregon Trail game with the use of signed/unsigned jump statements, 
+                  random number statements, & math calculations. Another project, involved a game 
+                  screen with collision detection, 2d movement, character frames, & interaction with 
+                  items. This project so far, is the first i've ever done utilizing JavaScript
+                  , I have worked on the back end of this project mostly adding photos to
+                   on the webpage & Vendia, getting the buttons on the website to work properly,
+                   & getting the webpage to not glitch out & function normally.   
+                    I do intend on doing more within my major, including joining an internship
+                  , joining any clubs, learning more languages including Python, & keeping
+                    my coding skills up to date.
+                  Feel free to contact me @ <a href={`mailto:moshleymarcelo11@yahoo.com`}> moshleymarcelo11@yahoo.com</a>.
                 </Typography>
               </CardContent>
             </Card>
