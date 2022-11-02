@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import img1 from ".././components/images/Portrait_Placeholder.png";
+import brianImg from "../components/images/brianbeilbypic.jpg";
 const About = () => {
   return (
     <Container maxWidth="xl">
@@ -18,7 +19,7 @@ const About = () => {
           component="div"
           textAlign="center"
         >
-          Programmers
+          Developers
         </Typography>
       </Box>
       <Box 
@@ -37,15 +38,18 @@ const About = () => {
               <CardMedia
                 component="img"
                 height="200"
-                image={img1}
+                image={brianImg}
                 alt="place holder"
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Test 1
+                  Brian Beilby
                 </Typography>
                 <Typography variant="body2">
-                  This clown did some coding. What a nerd
+                  I am attending CSUS, studying Computer Science. This is my first big web-development project but,
+                  in the past, I have worked on many projects for an internship organization which is where most of my practical
+                  experience has come from. You can contact me directly at
+                  <a href={`mailto:brianbeilby98@gmail.com`}> brianbeilby98@gmail.com</a>.
                 </Typography>
               </CardContent>
             </Card>
