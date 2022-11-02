@@ -9,17 +9,6 @@ const client = createVendiaClient({
 
 const { entities } = client; // entities const to access schema properties.
 
-const response = await entities.product.update({
-    _id: existingProduct._id,
-    name: 'EVEN-MORE-SUPER-widget',
-    inventory: 1000000,
-  });
-  
-  // Retrieving an item, changing a field, and saving the updated item
-  const product = await entities.product.get('abc-123');
-  product.inventory = product.inventory - 1;
-  const updateProductResponse = await entities.product.update(product)
-
   export async function update(entityId, props) {
     const entity = await entities.people.get(entityId);
     entity.DMV.name = props.name;

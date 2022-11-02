@@ -13,6 +13,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { getImage } from "../GetImage";
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { update } from "../Update";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -30,6 +36,23 @@ const DataDisplay = (props) => {
   const [data, setData] = React.useState(null);
   const [dmvImageUrl, setdmvImageUrl] = React.useState([]);
   const [dosImageUrl, setdosImageUrl] = React.useState([]);
+  const [entityId, setEntityId] = React.useState([]);
+  const [open, setOpen] = React.useState(false);
+  const [updateData, setUpdateData] = React.useState([]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleUpdate = async () => {
+    console.log(updateData);
+    await update(entityId, updateData)
+    handleClose();
+  };
 
   const getData = async () => {
     try {
@@ -40,6 +63,7 @@ const DataDisplay = (props) => {
         setdmvImageUrl(await getImage(res.DMV.imageId));
         setdosImageUrl(await getImage(res.DOS.imageId));
         setData(true);
+        setEntityId(res._id);
       });
     } catch {
       setData(false);
@@ -190,7 +214,96 @@ const DataDisplay = (props) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">Edit data</Button>
+                <Button size="small" onClick={handleClickOpen}>Edit data</Button>
+                <Dialog open={open} onClose={handleClose}>
+                  <DialogTitle>Edit Data</DialogTitle>
+                  <DialogContent>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Name"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => {
+                        let newValue = {name:e.target.value};
+                        setUpdateData(updateData => ({
+                          ...updateData,
+                          ...newValue
+                        }));
+                      }
+                      }
+                    />
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Date of Birth"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => {
+                        let newValue = {dob:e.target.value};
+                        setUpdateData(updateData => ({
+                          ...updateData,
+                          ...newValue
+                        }));
+                      }
+                      }
+                    />
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Driver's License Number"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => {
+                        let newValue = {dlNumber:e.target.value};
+                        setUpdateData(updateData => ({
+                          ...updateData,
+                          ...newValue
+                        }));
+                      }
+                      }
+                    />
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Passport Number"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => {
+                        let newValue = {passportNumber:e.target.value};
+                        setUpdateData(updateData => ({
+                          ...updateData,
+                          ...newValue
+                        }));
+                      }
+                      }
+                    />
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Passport Expiration"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => {
+                        let newValue = {passportExp:e.target.value};
+                        setUpdateData(updateData => ({
+                          ...updateData,
+                          ...newValue
+                        }));
+                      }
+                      }
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleUpdate}>Save</Button>
+                  </DialogActions>
+                </Dialog>
               </CardActions>
             </Card>
           </Grid>
