@@ -4,6 +4,8 @@ import Container from '@mui/material/Container';
 import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import img1 from ".././components/images/Portrait_Placeholder.png";
 import brianImg from "../components/images/brianbeilbypic.jpg";
+import coltonImg from "../components/images/colton_carvalho.jpg";
+
 const About = () => {
   return (
     <Container maxWidth="xl">
@@ -55,7 +57,7 @@ const About = () => {
             </Card>
           </Grid>
           <Grid item xs="auto">
-            <Card sx={{maxWidth: 400}}>
+          <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
                 height="200"
@@ -77,15 +79,20 @@ const About = () => {
               <CardMedia
                 component="img"
                 height="200"
-                image={img1}
+                image={coltonImg}
                 alt="place holder"
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Test 3
+                  Colton Carvalho
                 </Typography>
                 <Typography variant="body2">
-                  This clown did some coding. What a nerd
+                  Currently I'm studying for a bachelor's degree in Computer Science at California State University, Sacramento.
+                  On this web project I worked on the backend code for data processing, editing the front end code on an incidental basis.
+                  Most of my experience in working on projects comes from: previous internship opportunities, such as working 
+                  on cognitive and high frequency long range techonology in a 5G environment; freelance client-programmer requests; along with 
+                  personal projects stemming upwards of 8 years back. <br></br> 
+                  Contact me directly at <a href={`mailto:Coolguy1079@gmail.com`}>Coolguy1079@gmail.com</a>.
                 </Typography>
               </CardContent>
             </Card>
