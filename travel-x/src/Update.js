@@ -9,16 +9,23 @@ const client = createVendiaClient({
 
 const { entities } = client; // entities const to access schema properties.
 
-  export async function update(entityId, props) {
-    const entity = await entities.people.get(entityId);
-    entity.DMV.name = props.name;
-    entity.DMV.dob = props.dob;
-    entity.DMV.dlNumber = props.dlNumber;
-    entity.SS.name = props.name;
-    entity.SS.dob = props.dob;
-    entity.DOS.name = props.name;
-    entity.DOS.dob = props.dob;
-    entity.DOS.passportExp = props.passportExp;
-    entity.DOS.passportNumber = props.passportNumber;
-    await entities.people.update(entity);
-  }
+export async function updateEntity(entityId, props) {
+  await entities.people.update({
+    _id: entityId,
+    DMV: {
+      name: props.name,
+      dob: props.dob,
+      dlNumber: props.dlNumber,
+    },
+    SS: {
+      name: props.name,
+      dob: props.dob,
+    },
+    DOS: {
+      name: props.name,
+      dob: props.dob,
+      passportExp: props.passportExp,
+      passportNumber: props.passportNumber,
+    },
+  });
+}

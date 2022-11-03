@@ -10,7 +10,6 @@ const client = createVendiaClient({
 const { storage } = client;
 
 export async function getImage(imageId) {
-  console.log(imageId);
   const getFileResponse = await storage.files.get(imageId);
   return getFileResponse.temporaryUrl;
 }

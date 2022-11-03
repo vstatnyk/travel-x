@@ -18,7 +18,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { update } from "../Update";
+import { updateEntity } from "../Update";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -49,8 +49,7 @@ const DataDisplay = (props) => {
   };
 
   const handleUpdate = async () => {
-    console.log(updateData);
-    await update(entityId, updateData)
+    await updateEntity(entityId, updateData)
     handleClose();
   };
 
