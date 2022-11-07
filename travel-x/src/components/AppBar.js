@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import AuthenticationButton from "./authButton";
 import { DarkModeButton } from "../App";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Icon } from "@mui/material";
+import logo from './images/logo4.svg'
 
 const pages = ["Search", "About", "Contact"];
 
@@ -41,7 +43,10 @@ function ResponsiveAppBar() {
     <AppBar position="static" style={{ backgroundColor: "BurlyWood" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
+          <Icon>
+            <img src={logo} height={25} width={25} alt="Logo" />
+          </Icon>
           <Typography
             variant="h6"
             noWrap
@@ -172,7 +177,7 @@ function ResponsiveAppBar() {
               <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
                   <Link
-                    style={{ textDecoration: "none"}}
+                    style={{ textDecoration: "none" }}
                     to={`/Profile`}
                   >
                     Profile
