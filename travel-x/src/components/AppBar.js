@@ -46,7 +46,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            to="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -55,9 +55,12 @@ function ResponsiveAppBar() {
               letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
+              boxShadow: "none"
             }}
           >
-            TRAVELX
+            <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
+              TRAVELX
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
