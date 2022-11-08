@@ -16,7 +16,7 @@ import AuthenticationButton from "./authButton";
 import { DarkModeButton } from "../App";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Icon } from "@mui/material";
-import logo from './images/logo4.svg'
+import logo from './images/logo8.svg'
 
 const pages = ["Search", "About", "Contact"];
 
