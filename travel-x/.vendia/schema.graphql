@@ -199,6 +199,7 @@ enum Vendia_SyncMode {
 input Self_People_ConditionInput_ {
   DMV: Self_People_DMV_ConditionInput_
   DOS: Self_People_DOS_ConditionInput_
+  DOT: Self_People_DOT_ConditionInput_
   SS: Self_People_SS_ConditionInput_
   _and: [Self_People_ConditionInput_]
   _or: [Self_People_ConditionInput_]
@@ -206,8 +207,10 @@ input Self_People_ConditionInput_ {
 }
 
 input Self_People_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   DMV: Self_People_DMV_FilterInput_
   DOS: Self_People_DOS_FilterInput_
+  DOT: Self_People_DOT_FilterInput_
   SS: Self_People_SS_FilterInput_
   _and: [Self_People_FilterInput_]
   _or: [Self_People_FilterInput_]
@@ -222,6 +225,7 @@ type Self_People {
   _id: ID!
   DMV: Self_People_DMV
   DOS: Self_People_DOS
+  DOT: Self_People_DOT
   SS: Self_People_SS
   _owner: String
 }
@@ -230,6 +234,7 @@ type Self_People_Partial_ {
   _id: ID!
   DMV: Self_People_DMV_Partial_
   DOS: Self_People_DOS_Partial_
+  DOT: Self_People_DOT_Partial_
   SS: Self_People_SS_Partial_
   _owner: String
 }
@@ -258,18 +263,21 @@ type Self_People_Connection_ {
 input Self_People_Input_ {
   DMV: Self_People_DMV_Input_
   DOS: Self_People_DOS_Input_
+  DOT: Self_People_DOT_Input_
   SS: Self_People_SS_Input_
 }
 
 input Self_People_UpdateInput_ {
   DMV: Self_People_DMV_UpdateInput_
   DOS: Self_People_DOS_UpdateInput_
+  DOT: Self_People_DOT_UpdateInput_
   SS: Self_People_SS_UpdateInput_
 }
 
 input Self_People_PartialInput_ {
   DMV: Self_People_DMV_PartialInput_
   DOS: Self_People_DOS_PartialInput_
+  DOT: Self_People_DOT_PartialInput_
   SS: Self_People_SS_PartialInput_
 }
 
@@ -370,6 +378,54 @@ type Self_People_DOS_Transaction_Result_ {
 }
 
 type Self_People_DOS_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+input Self_People_DOT_ConditionInput_ {
+  arrivalTime: Vendia_ModelStringInput_
+  departTime: Vendia_ModelStringInput_
+  flightNum: Vendia_ModelStringInput_
+  manifest: Vendia_ModelStringInput_
+  _and: [Self_People_DOT_ConditionInput_]
+  _or: [Self_People_DOT_ConditionInput_]
+  _not: Self_People_DOT_ConditionInput_
+}
+
+input Self_People_DOT_FilterInput_ {
+  arrivalTime: Vendia_ModelStringInput_
+  departTime: Vendia_ModelStringInput_
+  flightNum: Vendia_ModelStringInput_
+  manifest: Vendia_ModelStringInput_
+  _and: [Self_People_DOT_FilterInput_]
+  _or: [Self_People_DOT_FilterInput_]
+  _not: Self_People_DOT_FilterInput_
+}
+
+type Self_People_DOT {
+  arrivalTime: String
+  departTime: String
+  flightNum: String
+  manifest: String
+}
+
+type Self_People_DOT_Partial_ {
+  arrivalTime: String
+  departTime: String
+  flightNum: String
+  manifest: String
+}
+
+type Self_People_DOT_Result_ {
+  error: String
+  result: Self_People_DOT
+}
+
+type Self_People_DOT_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_People_DOT
+}
+
+type Self_People_DOT_Delete_Transaction_Result_ {
   transaction: Vendia_Transaction!
 }
 
@@ -1746,6 +1802,7 @@ input Vendia_Subscription_ConditionInput_ {
 }
 
 input Vendia_Subscription_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   operation: Vendia_ModelStringInput_
   connectionId: Vendia_ModelStringInput_
   _and: [Vendia_Subscription_FilterInput_]
@@ -1824,6 +1881,7 @@ input Vendia_Block_ConditionInput_ {
 }
 
 input Vendia_Block_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   blockSchemaVersion: Vendia_ModelStringInput_
   blockId: Vendia_ModelStringInput_
   redactedBlockHash: Vendia_ModelStringInput_
@@ -1955,6 +2013,7 @@ input Vendia_File_ConditionInput_ {
 }
 
 input Vendia_File_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   sourceBucket: Vendia_ModelStringInput_
   sourceKey: Vendia_ModelStringInput_
   sourceRegion: Vendia_ModelStringInput_
@@ -2096,6 +2155,7 @@ input Vendia_Folder_ConditionInput_ {
 }
 
 input Vendia_Folder_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   parent: Vendia_ModelStringInput_
   read: Vendia_ModelStringInput_
@@ -2194,6 +2254,7 @@ input Vendia_Contract_ConditionInput_ {
 }
 
 input Vendia_Contract_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   description: Vendia_ModelStringInput_
   revisionId: Vendia_ModelStringInput_
@@ -2289,6 +2350,7 @@ input Vendia_ApiKey_ConditionInput_ {
 }
 
 input Vendia_ApiKey_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   status: Vendia_ModelStringInput_
   expiry: Vendia_ModelStringInput_
@@ -2371,6 +2433,7 @@ input Vendia_JwtAuthentication_ConditionInput_ {
 }
 
 input Vendia_JwtAuthentication_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   name: Vendia_ModelStringInput_
   jwksUrl: Vendia_ModelStringInput_
   issuer: Vendia_ModelStringInput_
@@ -2676,6 +2739,7 @@ input Vendia_DeploymentInfo_ConditionInput_ {
 }
 
 input Vendia_DeploymentInfo_FilterInput_ {
+  _owner: Vendia_ModelStringInput_
   deploymentTime: Vendia_ModelStringInput_
   consensusDefinitionHash: Vendia_ModelStringInput_
   versionTag: Vendia_ModelStringInput_
@@ -2800,7 +2864,6 @@ type Mutation {
   removeVendia_JwtAuthentication(id: ID!, condition: Vendia_JwtAuthentication_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_JwtAuthentication_Delete_Transaction_Result_
   updateVendia_Settings(input: Vendia_Settings_UpdateInput_!, condition: Vendia_Settings_ConditionInput_, syncMode: Vendia_SyncMode!): Vendia_Settings_Transaction_Result_
   invokeVendia_Contract(id: ID!, revisionId: String, input: Vendia_Contract_InvokeInput_, syncMode: Vendia_SyncMode!): Vendia_Contract_Transaction_Result_
-  invokeVendia_Contract_async(id: ID!, revisionId: String, input: Vendia_Contract_InvokeInput_): Vendia_Transaction_Result_
 }
 
 type Subscription {
@@ -2896,6 +2959,27 @@ input Self_People_DOS_PartialInput_ {
   name: String
   passportExp: String
   passportNumber: String
+}
+
+input Self_People_DOT_Input_ {
+  arrivalTime: String
+  departTime: String
+  flightNum: String
+  manifest: String
+}
+
+input Self_People_DOT_UpdateInput_ {
+  arrivalTime: String
+  departTime: String
+  flightNum: String
+  manifest: String
+}
+
+input Self_People_DOT_PartialInput_ {
+  arrivalTime: String
+  departTime: String
+  flightNum: String
+  manifest: String
 }
 
 input Self_People_SS_Input_ {

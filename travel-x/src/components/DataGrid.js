@@ -5,7 +5,7 @@ import { query } from "../server";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Divider, LinearProgress, Stack } from "@mui/material";
+import { Divider, LinearProgress, Stack, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -34,6 +34,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
+
+function createData(name, dob, dlNumber, passportNumber, passportExp) {
+  return { name, dob, dlNumber, passportNumber, passportExp };
+}
 
 const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
@@ -81,6 +85,10 @@ const DataDisplay = (props) => {
   React.useEffect(() => {
     getData();
   }, [getData]);
+
+  const rows = [
+    createData(dmvData.name, dosData.dob, dmvData.dlNumber, dosData.passportNumber, dosData.passportExp)
+  ];
 
   const dmvColumns = [
     {
@@ -179,64 +187,194 @@ const DataDisplay = (props) => {
         }}
         > */}
         <div className="DMV_img">
-        <Card sx={{ maxWidth: "100%" }}>
-          <Typography
-            variant="body1"
-            color="text.primary"
-            fontSize={40}
-            textAlign="center"
-          >
-            {props.dept}
-          </Typography>
-          <CardMedia
-            className="position"
-            component="img"
-            image={dmvImageUrl}
-            alt="image Unavailable"
-          />
-        </Card>
+          <Card sx={{ maxWidth: "100%" }}>
+            <Typography
+              variant="body1"
+              color="text.primary"
+              fontSize={40}
+              textAlign="center"
+            >
+              {props.dept}
+            </Typography>
+            <CardMedia
+              className="position"
+              component="img"
+              image={dmvImageUrl}
+              alt="image Unavailable"
+            />
+          </Card>
         </div>
         <div className="PersonInfo">
-          <Card elevation={20} sx={{ backgroundColor: "burlywood" }}>
+          {/* <TableContainer component={Paper} elevation={20} sx={{ backgroundColor: "burlywood" }}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Full Name</TableCell>
+                  <TableCell align="right">Date of Birth</TableCell>
+                  <TableCell align="right">Driver's License Number</TableCell>
+                  <TableCell align="right">Passport Number</TableCell>
+                  <TableCell align="right">Passport Expiration Date</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell component="th" scope="row">
+                      {row.name}
+                    </TableCell>
+                    <TableCell align="right">{row.dob}</TableCell>
+                    <TableCell align="right">{row.dlNumber}</TableCell>
+                    <TableCell align="right">{row.passportNumber}</TableCell>
+                    <TableCell align="right">{row.passportExp}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer> */}
+          <Card elevation={15} sx={{ backgroundColor: "burlywood" }}>
             <CardContent>
               <Typography gutterBottom variant="h4" component="div">
                 {dmvData.name}
               </Typography>
-                <Stack direction="column" divider={<Divider orientation="horizontal" flexItem style={{ backgroundColor: "black" }} />} spacing={2}>
-                  <Item>Date of Birth: {dosData.dob}</Item>
-                  <Item>Driver License Number: {dmvData.dlNumber}</Item>
-                  <Item>Passport Number: {dosData.passportNumber}</Item>
-                  <Item>Passport Expiration Date: {dosData.passportExp}</Item>
-                </Stack>
+              <Stack
+                direction="column"
+                divider={
+                  <Divider
+                    orientation="horizontal"
+                    flexItem
+                    style={{ backgroundColor: "black" }}
+                  />
+                }
+                spacing={2}
+              >
+                <Item>Date of Birth: {dosData.dob}</Item>
+                <Item>Driver's License Number: {dmvData.dlNumber}</Item>
+                <Item>Passport Number: {dosData.passportNumber}</Item>
+                <Item>Passport Expiration Date: {dosData.passportExp}</Item>
+              </Stack>
             </CardContent>
+            <CardActions>
+              <Button size="small" onClick={handleClickOpen}>
+                Edit data
+              </Button>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Transition}
+              >
+                <DialogTitle>Edit Data</DialogTitle>
+                <DialogContent>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Name"
+                    fullWidth
+                    variant="filled"
+                    onChange={(e) => {
+                      let newValue = { name: e.target.value };
+                      setUpdateData((updateData) => ({
+                        ...updateData,
+                        ...newValue,
+                      }));
+                    }}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Date of Birth"
+                    fullWidth
+                    variant="filled"
+                    onChange={(e) => {
+                      let newValue = { dob: e.target.value };
+                      setUpdateData((updateData) => ({
+                        ...updateData,
+                        ...newValue,
+                      }));
+                    }}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Driver's License Number"
+                    fullWidth
+                    variant="filled"
+                    onChange={(e) => {
+                      let newValue = { dlNumber: e.target.value };
+                      setUpdateData((updateData) => ({
+                        ...updateData,
+                        ...newValue,
+                      }));
+                    }}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Passport Number"
+                    fullWidth
+                    variant="filled"
+                    onChange={(e) => {
+                      let newValue = { passportNumber: e.target.value };
+                      setUpdateData((updateData) => ({
+                        ...updateData,
+                        ...newValue,
+                      }));
+                    }}
+                  />
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Passport Expiration"
+                    fullWidth
+                    variant="filled"
+                    onChange={(e) => {
+                      let newValue = { passportExp: e.target.value };
+                      setUpdateData((updateData) => ({
+                        ...updateData,
+                        ...newValue,
+                      }));
+                    }}
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Cancel</Button>
+                  <Button onClick={handleUpdate}>Save</Button>
+                </DialogActions>
+              </Dialog>
+            </CardActions>
           </Card>
         </div>
         <div className="DOS_img">
-        <Card sx={{ maxWidth: "100%" }}>
-          <Typography
-            variant="body1"
-            color="text.primary"
-            fontSize={40}
-            textAlign="center"
-          >
-            {props.dept}
-          </Typography>
-          <CardMedia
-            className="position"
-            component="img"
-            image={dosImageUrl}
-            alt="image Unavailable"
-          />
-        </Card>
+          <Card sx={{ maxWidth: "100%" }}>
+            <Typography
+              variant="body1"
+              color="text.primary"
+              fontSize={40}
+              textAlign="center"
+            >
+              {props.dept}
+            </Typography>
+            <CardMedia
+              className="position"
+              component="img"
+              image={dosImageUrl}
+              alt="image Unavailable"
+            />
+          </Card>
         </div>
-      {/* </Box> */}
+        {/* </Box> */}
       </div>
-    )
+    );
   }
 };
 
 export default DataDisplay;
-{/* <Box
+{
+  /* <Box
         sx={{
           paddingLeft: "1%",
           paddingRight: "1%",
@@ -476,4 +614,5 @@ export default DataDisplay;
         This person was not found in the database :(
       </div>
     );
-  } */}
+  } */
+}

@@ -75,6 +75,28 @@
                 "type": "string"
               }
             }
+          },
+          "DOT": {
+            "description": "DOT Agency",
+            "type": "object",
+            "properties": {
+              "departTime": {
+                "description": "Immigrant's Departure Time",
+                "type": "string"
+              },
+              "arrivalTime": {
+                "description": "Immigrant's Arrival Time",
+                "type": "string"
+              },
+              "flightNum": {
+                "description": "Immigrant's Flight Number",
+                "type": "string"
+              },
+              "manifest": {
+                "description": "Immigrant's Flight Manifest",
+                "type": "string"
+              }
+            }
           }
         }
       }

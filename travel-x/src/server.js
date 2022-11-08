@@ -19,6 +19,6 @@ export async function query(ssn) {
       },
     },
   });
-
+  console.log(response.items[0]);
   return response.items[0];
 }
