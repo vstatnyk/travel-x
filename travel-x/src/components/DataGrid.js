@@ -5,7 +5,7 @@ import { query } from "../server";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { LinearProgress } from "@mui/material";
+import { Divider, LinearProgress, Stack } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -24,8 +24,8 @@ import { width } from "@mui/system";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
+  backgroundColor: "whitesmoke",
+  ...theme.typography.body1,
   padding: theme.spacing(1),
   textAlign: "center",
   color: theme.palette.text.secondary,
@@ -197,11 +197,19 @@ const DataDisplay = (props) => {
         </Card>
         </div>
         <div className="PersonInfo">
-          Full Name: {dmvData.name}<br />
-          Date of Birth: {dosData.dob}<br />
-          Driver License Number: {dmvData.dlNumber}<br />
-          Passport Number: {dosData.passportNumber}<br />
-          Passport Expiration Date {dosData.passportExp}
+          <Card elevation={20} sx={{ backgroundColor: "burlywood" }}>
+            <CardContent>
+              <Typography gutterBottom variant="h4" component="div">
+                {dmvData.name}
+              </Typography>
+                <Stack direction="column" divider={<Divider orientation="horizontal" flexItem style={{ backgroundColor: "black" }} />} spacing={2}>
+                  <Item>Date of Birth: {dosData.dob}</Item>
+                  <Item>Driver License Number: {dmvData.dlNumber}</Item>
+                  <Item>Passport Number: {dosData.passportNumber}</Item>
+                  <Item>Passport Expiration Date: {dosData.passportExp}</Item>
+                </Stack>
+            </CardContent>
+          </Card>
         </div>
         <div className="DOS_img">
         <Card sx={{ maxWidth: "100%" }}>
