@@ -103,6 +103,7 @@ label {
   border: 30px solid RED;  
   border-radius: 25px;;
 }
+
 .Position{
   height: 100%;
   width: 100%;
@@ -163,6 +164,40 @@ a {
   justify-content: center;
   font-size: 40px;
   font-weight: bold;
+}
+
+.Breakdown{  
+  height: 100%;
+  width: 100%;
+  margin-top: 2%;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position:absolute;
+  right: 0;
+  flex-grow: 100;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.DMV_img{
+  height: 100%;
+  width: 100%;
+  margin-top: 2%;
+  float: left;
+}
+.DOS_img{
+  height: 100%;
+  width: 100%;
+  margin-top: 2%;
+  float: right;
+}
+.PersonInfo{
+  height: 100%;
+  width: 100%;
+  margin-top: 2%;
+  float: center;
 }
 
 /* TODO: */

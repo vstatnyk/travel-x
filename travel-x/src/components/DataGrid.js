@@ -20,6 +20,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { updateEntity } from "../Update";
 import Slide from "@mui/material/Slide";
+import { width } from "@mui/system";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -165,7 +166,69 @@ const DataDisplay = (props) => {
   if (data) {
     return (
       // bgcolor: 'rgb(28,54,100)'
-      <Box
+      <div className="Breakdown">
+        {/* <Box
+        sx={{
+          paddingLeft: "1%",
+          paddingRight: "1%",
+          width: "100%",
+          mt: 3,
+          // position: "absolute",
+          right: 0,
+          flexGrow: 100,
+        }}
+        > */}
+        <div className="DMV_img">
+        <Card sx={{ maxWidth: "100%" }}>
+          <Typography
+            variant="body1"
+            color="text.primary"
+            fontSize={40}
+            textAlign="center"
+          >
+            {props.dept}
+          </Typography>
+          <CardMedia
+            className="position"
+            component="img"
+            image={dmvImageUrl}
+            alt="image Unavailable"
+          />
+        </Card>
+        </div>
+        <div className="PersonInfo">
+          Full Name: {dmvData.name}<br />
+          Date of Birth: {dosData.dob}<br />
+          Driver License Number: {dmvData.dlNumber}<br />
+          Passport Number: {dosData.passportNumber}<br />
+          Passport Expiration Date {dosData.passportExp}
+        </div>
+        <div className="DOS_img">
+        <Card sx={{ maxWidth: "100%" }}>
+          <Typography
+            variant="body1"
+            color="text.primary"
+            fontSize={40}
+            textAlign="center"
+          >
+            {props.dept}
+          </Typography>
+          <CardMedia
+            className="position"
+            component="img"
+            image={dosImageUrl}
+            alt="image Unavailable"
+          />
+        </Card>
+        </div>
+      {/* </Box> */}
+      </div>
+    )
+  }
+};
+
+export default DataDisplay;
+{/* <Box
         sx={{
           paddingLeft: "1%",
           paddingRight: "1%",
@@ -405,7 +468,4 @@ const DataDisplay = (props) => {
         This person was not found in the database :(
       </div>
     );
-  }
-};
-
-export default DataDisplay;
+  } */}
