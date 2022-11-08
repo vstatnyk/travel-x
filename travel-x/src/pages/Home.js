@@ -1,6 +1,6 @@
 import { Container } from '@mui/system';
 import * as React from 'react';
-import logo from ".././components/images/logo.png";
+import logo from ".././components/images/logo2.png";
 
 const Home = () => {
   return (
