@@ -5,7 +5,7 @@ import { query } from "../server";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Divider, LinearProgress, Stack, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import { Divider, LinearProgress, Link, Stack, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -21,6 +21,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { updateEntity } from "../Update";
 import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
+import { getManifest } from "../GetManifest";
+import arthasman from './images/ArthasManifest.pdf';
+import { Document, Page, BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
+import InputMask from "react-input-mask";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -50,6 +54,7 @@ const DataDisplay = (props) => {
   const [open, setOpen] = React.useState(false);
   const [updateData, setUpdateData] = React.useState([]);
   const [dotData, setdotData] = React.useState([]);
+  const [manifestUrl, setManifestUrl] = React.useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,7 +65,7 @@ const DataDisplay = (props) => {
   };
 
   const handleUpdate = async () => {
-    await updateEntity(entityId, updateData);
+    updateEntity(entityId, updateData);
     handleClose();
   };
 
@@ -75,6 +80,7 @@ const DataDisplay = (props) => {
         setData(true);
         setEntityId(res._id);
         setdotData(res.DOT);
+        setManifestUrl(await getManifest(res.DOT.manifest));
       });
     } catch {
       setData(false);
@@ -91,6 +97,16 @@ const DataDisplay = (props) => {
   const rows = [
     createData(dmvData.name, dosData.dob, dmvData.dlNumber, dosData.passportNumber, dosData.passportExp)
   ];
+
+  const MyDoc = (
+    <Document file={manifestUrl}>
+      <Page pageNumber={1} />
+    </Document>
+  );
+
+  const openPDF = (url) => {
+    window.open(url, '_blank');
+  };
 
   if (data) {
     return (
@@ -175,6 +191,9 @@ const DataDisplay = (props) => {
                 <Item>Flight Departure Time: {dotData.departTime}</Item>
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
+                <Item>
+                  
+                </Item>
               </Stack>
             </CardContent>
             <CardActions>
@@ -188,13 +207,10 @@ const DataDisplay = (props) => {
               >
                 <DialogTitle>Edit Data</DialogTitle>
                 <DialogContent>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Name"
-                    fullWidth
-                    variant="filled"
+                  <InputMask
+                    mask="a"
+                    guide={false}
+                    maskChar=""
                     onChange={(e) => {
                       let newValue = { name: e.target.value };
                       setUpdateData((updateData) => ({
@@ -202,7 +218,18 @@ const DataDisplay = (props) => {
                         ...newValue,
                       }));
                     }}
-                  />
+                  >
+                    {() => (
+                      <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Name"
+                      fullWidth
+                      variant="filled"
+                    />
+                    )}
+                  </InputMask>
                   <TextField
                     autoFocus
                     margin="dense"
