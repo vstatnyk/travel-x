@@ -49,6 +49,7 @@ const DataDisplay = (props) => {
   const [entityId, setEntityId] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const [updateData, setUpdateData] = React.useState([]);
+  const [dotData, setdotData] = React.useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -73,6 +74,7 @@ const DataDisplay = (props) => {
         setdosImageUrl(await getImage(res.DOS.imageId));
         setData(true);
         setEntityId(res._id);
+        setdotData(res.DOT);
       });
     } catch {
       setData(false);
@@ -88,87 +90,6 @@ const DataDisplay = (props) => {
 
   const rows = [
     createData(dmvData.name, dosData.dob, dmvData.dlNumber, dosData.passportNumber, dosData.passportExp)
-  ];
-
-  const dmvColumns = [
-    {
-      field: "name",
-      headerName: "Full Name",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "dob",
-      headerName: "Date Of Birth",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "dlNumber",
-      headerName: "Driver's License Number",
-      type: "number",
-      width: 185,
-      editable: true,
-    },
-  ];
-
-  const dmvRows = [
-    { id: 1, name: dmvData.name, dob: dmvData.dob, dlNumber: dmvData.dlNumber },
-  ];
-
-  const ssColumns = [
-    {
-      field: "name",
-      headerName: "Full Name",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "dob",
-      headerName: "Date Of Birth",
-      width: 150,
-      editable: true,
-    },
-  ];
-
-  const ssRows = [{ id: 1, name: ssData.name, dob: ssData.dob }];
-
-  const dosColumns = [
-    {
-      field: "name",
-      headerName: "Full Name",
-      width: 150,
-      editable: true,
-    },
-    {
-      field: "dob",
-      headerName: "Date Of Birth",
-      width: 100,
-      editable: true,
-    },
-    {
-      field: "passportNumber",
-      headerName: "Passport Number",
-      type: "number",
-      width: 145,
-      editable: true,
-    },
-    {
-      field: "passportExp",
-      headerName: "Passport Expiration Date",
-      width: 175,
-      editable: true,
-    },
-  ];
-
-  const dosRows = [
-    {
-      id: 1,
-      name: dosData.name,
-      dob: dosData.dob,
-      passportNumber: dosData.passportNumber,
-      passportExp: dosData.passportExp,
-    },
   ];
 
   if (data) {
@@ -251,6 +172,9 @@ const DataDisplay = (props) => {
                 <Item>Driver's License Number: {dmvData.dlNumber}</Item>
                 <Item>Passport Number: {dosData.passportNumber}</Item>
                 <Item>Passport Expiration Date: {dosData.passportExp}</Item>
+                <Item>Flight Departure Time: {dotData.departTime}</Item>
+                <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
+                <Item>Flight Number: {dotData.flightNum}</Item>
               </Stack>
             </CardContent>
             <CardActions>
