@@ -36,6 +36,7 @@ import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
 import { getManifest } from "../GetManifest";
 import arthasman from "./images/ArthasManifest.pdf";
+import lionelman from "./images/LionelManifest.pdf"
 import {
   Document,
   Page,
@@ -45,6 +46,7 @@ import {
 import InputMask from "react-input-mask";
 import LoadingButton from '@mui/lab/LoadingButton';
 import SaveIcon from '@mui/icons-material/Save';
+import Save from "@mui/icons-material/Save";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -240,8 +242,8 @@ const DataDisplay = (props) => {
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
                 <Item>
-                  <a href={manifestUrl}>Download Flight Manifest</a>
-                  <a href={arthasman} target="_blank" rel="noreferrer">
+                  <a href={manifestUrl}>Download Flight Manifest</a> / 
+                  <a href={lionelman} target="_blank" rel="noreferrer">
                     Open Flight Manifest
                   </a>
                 </Item>
@@ -377,8 +379,8 @@ const DataDisplay = (props) => {
                   </InputMask>
                 </DialogContent>
                 <DialogActions>
-                  <Button onClick={handleClose}>Cancel</Button>
-                  <LoadingButton onClick={handleUpdate} loading={loading} loadingPosition="end" startIcon={<SaveIcon />}>Save</LoadingButton>
+                  <Button size="large" onClick={handleClose}>Cancel</Button>
+                  <LoadingButton size="large" onClick={handleUpdate} loading={loading} startIcon={<SaveIcon />} loadingPosition="start">Save</LoadingButton>
                 </DialogActions>
               </Dialog>
             </CardActions>
