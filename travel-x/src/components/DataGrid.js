@@ -5,7 +5,19 @@ import { query } from "../server";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Divider, LinearProgress, Link, Stack, Tab, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
+import {
+  Divider,
+  LinearProgress,
+  Link,
+  Stack,
+  Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -22,8 +34,13 @@ import { updateEntity } from "../Update";
 import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
 import { getManifest } from "../GetManifest";
-import arthasman from './images/ArthasManifest.pdf';
-import { Document, Page, BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
+import arthasman from "./images/ArthasManifest.pdf";
+import {
+  Document,
+  Page,
+  BlobProvider,
+  PDFDownloadLink,
+} from "@react-pdf/renderer";
 import InputMask from "react-input-mask";
 //import { rgbToHex } from '@mui/material';
 
@@ -43,6 +60,8 @@ function createData(name, dob, dlNumber, passportNumber, passportExp) {
   return { name, dob, dlNumber, passportNumber, passportExp };
 }
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms)); // Delay for specified amount of time(ms).
+
 const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
@@ -55,8 +74,18 @@ const DataDisplay = (props) => {
   const [updateData, setUpdateData] = React.useState([]);
   const [dotData, setdotData] = React.useState([]);
   const [manifestUrl, setManifestUrl] = React.useState([]);
+  const [maskDob, setMaskDob] = React.useState([]);
+  const [maskDlNum, setMaskDlNum] = React.useState([]);
+  const [maskPassNum, setMaskPassNum] = React.useState([]);
+  const [maskPassExp, setMaskPassExp] = React.useState([]);
+  const [maskName, setMaskName] = React.useState([]);
 
   const handleClickOpen = () => {
+    setMaskName(dmvData.name);
+    setMaskDob(dmvData.dob);
+    setMaskDlNum(dmvData.dlNumber);
+    setMaskPassNum(dosData.passportNumber);
+    setMaskPassExp(dosData.passportExp);
     setOpen(true);
   };
 
@@ -66,6 +95,8 @@ const DataDisplay = (props) => {
 
   const handleUpdate = async () => {
     updateEntity(entityId, updateData);
+    await sleep(4000);
+    getData();
     handleClose();
   };
 
@@ -81,6 +112,11 @@ const DataDisplay = (props) => {
         setEntityId(res._id);
         setdotData(res.DOT);
         setManifestUrl(await getManifest(res.DOT.manifest));
+        setMaskDob(res.DMV.dob);
+        setMaskDlNum(res.DMV.dlNumber);
+        setMaskPassNum(res.DOS.passportNumber);
+        setMaskPassExp(res.DOS.passportExp);
+        setMaskName(res.DMV.name);
       });
     } catch {
       setData(false);
@@ -95,7 +131,13 @@ const DataDisplay = (props) => {
   }, [getData]);
 
   const rows = [
-    createData(dmvData.name, dosData.dob, dmvData.dlNumber, dosData.passportNumber, dosData.passportExp)
+    createData(
+      dmvData.name,
+      dosData.dob,
+      dmvData.dlNumber,
+      dosData.passportNumber,
+      dosData.passportExp
+    ),
   ];
 
   const MyDoc = (
@@ -105,7 +147,7 @@ const DataDisplay = (props) => {
   );
 
   const openPDF = (url) => {
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   if (data) {
@@ -192,7 +234,10 @@ const DataDisplay = (props) => {
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
                 <Item>
-                  
+                  <a href={manifestUrl}>Download Flight Manifest</a> /
+                  <a href={arthasman} target="_blank">
+                    Open Flight Manifest
+                  </a>
                 </Item>
               </Stack>
             </CardContent>
@@ -207,89 +252,123 @@ const DataDisplay = (props) => {
               >
                 <DialogTitle>Edit Data</DialogTitle>
                 <DialogContent>
-                  <InputMask
-                    mask="a"
-                    guide={false}
-                    maskChar=""
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="Name"
+                    fullWidth
+                    variant="filled"
+                    value={maskName}
                     onChange={(e) => {
                       let newValue = { name: e.target.value };
                       setUpdateData((updateData) => ({
                         ...updateData,
                         ...newValue,
                       }));
+                      setMaskName(e.target.value);
                     }}
-                  >
-                    {() => (
-                      <TextField
-                      autoFocus
-                      margin="dense"
-                      id="name"
-                      label="Name"
-                      fullWidth
-                      variant="filled"
-                    />
-                    )}
-                  </InputMask>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Date of Birth"
-                    fullWidth
-                    variant="filled"
+                  />
+                  <InputMask
+                    mask="99/99/9999"
+                    maskChar=""
+                    value={maskDob}
                     onChange={(e) => {
                       let newValue = { dob: e.target.value };
                       setUpdateData((updateData) => ({
                         ...updateData,
                         ...newValue,
                       }));
+                      setMaskDob(e.target.value);
                     }}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Driver's License Number"
-                    fullWidth
-                    variant="filled"
+                  >
+                    {() => (
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="dob"
+                        label="Date of Birth"
+                        fullWidth
+                        variant="filled"
+                        placeholder="MM/DD/YYYY"
+                      />
+                    )}
+                  </InputMask>
+                  <InputMask
+                    mask="999999999"
+                    value={maskDlNum}
+                    maskChar=""
                     onChange={(e) => {
                       let newValue = { dlNumber: e.target.value };
                       setUpdateData((updateData) => ({
                         ...updateData,
                         ...newValue,
                       }));
+                      setMaskDlNum(e.target.value);
                     }}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Passport Number"
-                    fullWidth
-                    variant="filled"
+                  >
+                    {() => (
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="dlNumber"
+                        label="Driver's License Number"
+                        fullWidth
+                        variant="filled"
+                        placeholder="xxxxxxxxx"
+                      />
+                    )}
+                  </InputMask>
+                  <InputMask
+                    mask="999999999"
+                    value={maskPassNum}
+                    maskChar=""
                     onChange={(e) => {
                       let newValue = { passportNumber: e.target.value };
                       setUpdateData((updateData) => ({
                         ...updateData,
                         ...newValue,
                       }));
+                      setMaskPassNum(e.target.value);
                     }}
-                  />
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Passport Expiration"
-                    fullWidth
-                    variant="filled"
+                  >
+                    {() => (
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="passportNumber"
+                        label="Passport Number"
+                        fullWidth
+                        variant="filled"
+                        placeholder="xxxxxxxxx"
+                      />
+                    )}
+                  </InputMask>
+                  <InputMask
+                    mask="99/99/9999"
+                    value={maskPassExp}
+                    maskChar=""
                     onChange={(e) => {
                       let newValue = { passportExp: e.target.value };
                       setUpdateData((updateData) => ({
                         ...updateData,
                         ...newValue,
                       }));
+                      setMaskPassExp(e.target.value);
                     }}
-                  />
+                  >
+                    {() => (
+                      <TextField
+                        autoFocus
+                        margin="dense"
+                        id="passportExp"
+                        label="Passport Expiration Date"
+                        fullWidth
+                        variant="filled"
+                        placeholder="MM/DD/YYYY"
+                      />
+                    )}
+                  </InputMask>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Cancel</Button>
