@@ -6,14 +6,16 @@ import img1 from ".././components/images/Portrait_Placeholder.png";
 import brianImg from "../components/images/brianbeilbypic.jpg";
 import coltonImg from "../components/images/colton_carvalho.jpg";
 import moshImg from "../components/images/Resized Photo for Profile Picture.jpg";
+import vsImg from "../components/images/Vstat.jpg"; 
 const About = () => {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xxl">
       <Box
         sx={{
           m: 1,
           p: 2,
           height: 90,
+
         }}
       >
         <Typography 
@@ -27,6 +29,7 @@ const About = () => {
       <Box 
         sx={{
           maxWidth: 4/5,
+          paddingLeft: "18%"
         }}
       >
         <Grid 
@@ -39,7 +42,7 @@ const About = () => {
             <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
+                height="400"
                 image={brianImg}
                 alt="place holder"
               />
@@ -60,7 +63,7 @@ const About = () => {
           <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="350"
+                height="400"
                 image={moshImg}
                 alt="place holder"
               />
@@ -91,7 +94,7 @@ const About = () => {
             <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
+                height="400"
                 image={coltonImg}
                 alt="place holder"
               />
@@ -114,13 +117,13 @@ const About = () => {
             <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
+                height="400"
                 image={img1}
                 alt="place holder"
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Test 4
+                Test 4
                 </Typography>
                 <Typography variant="body2">
                   This clown did some coding. What a nerd
@@ -132,7 +135,7 @@ const About = () => {
             <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
+                height="400"
                 image={img1}
                 alt="place holder"
               />
@@ -150,13 +153,13 @@ const About = () => {
             <Card sx={{maxWidth: 400}}>
               <CardMedia
                 component="img"
-                height="200"
-                image={img1}
+                height="400"
+                image={vsImg}
                 alt="place holder"
               />
               <CardContent>
                 <Typography variant="h5" component="div">
-                  Test 6
+                  Vlad Statnyk
                 </Typography>
                 <Typography variant="body2">
                   This clown did some coding. What a nerd
