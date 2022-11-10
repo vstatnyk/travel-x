@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import {
+  CircularProgress,
   Divider,
   LinearProgress,
   Link,
@@ -42,6 +43,8 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import InputMask from "react-input-mask";
+import LoadingButton from '@mui/lab/LoadingButton';
+import SaveIcon from '@mui/icons-material/Save';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -79,6 +82,7 @@ const DataDisplay = (props) => {
   const [maskPassNum, setMaskPassNum] = React.useState([]);
   const [maskPassExp, setMaskPassExp] = React.useState([]);
   const [maskName, setMaskName] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
   const handleClickOpen = () => {
     setMaskName(dmvData.name);
@@ -94,8 +98,10 @@ const DataDisplay = (props) => {
   };
 
   const handleUpdate = async () => {
+    setLoading(true);
     updateEntity(entityId, updateData);
-    await sleep(4000);
+    await sleep(5000);
+    setLoading(false);
     getData();
     handleClose();
   };
@@ -234,8 +240,8 @@ const DataDisplay = (props) => {
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
                 <Item>
-                  <a href={manifestUrl}>Download Flight Manifest</a> /
-                  <a href={arthasman} target="_blank">
+                  <a href={manifestUrl}>Download Flight Manifest</a>
+                  <a href={arthasman} target="_blank" rel="noreferrer">
                     Open Flight Manifest
                   </a>
                 </Item>
@@ -372,7 +378,7 @@ const DataDisplay = (props) => {
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Cancel</Button>
-                  <Button onClick={handleUpdate}>Save</Button>
+                  <LoadingButton onClick={handleUpdate} loading={loading} loadingPosition="end" startIcon={<SaveIcon />}>Save</LoadingButton>
                 </DialogActions>
               </Dialog>
             </CardActions>
