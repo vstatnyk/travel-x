@@ -242,7 +242,7 @@ const DataDisplay = (props) => {
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
                 <Item>
-                  <a href={manifestUrl}>Download Flight Manifest</a> / 
+                  <a href={manifestUrl}>Download Flight Manifest</a>/ 
                   <a href={lionelman} target="_blank" rel="noreferrer">
                     Open Flight Manifest
                   </a>

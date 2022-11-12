@@ -67,7 +67,10 @@ function App() {
         <ResponsiveAppBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/Search" element={<Search />} />
+          <Route
+            path="/Search"
+            element={<ProtectedRoute component={Search} />}
+          />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/About" element={<About />} />
           <Route
