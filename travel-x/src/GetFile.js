@@ -1,5 +1,4 @@
 const createVendiaClient = require("@vendia/client").createVendiaClient;
-const FileSaver = require('file-saver');
 
 // Instantiate the Vendia client and authenticate to it.
 const client = createVendiaClient({
@@ -10,8 +9,7 @@ const client = createVendiaClient({
 
 const { storage } = client;
 
-export async function getManifest(fileId) {
+export async function getFile(fileId) {
   const getFileResponse = await storage.files.get(fileId);
-  console.log(getFileResponse.etag);
   return getFileResponse.temporaryUrl;
 }

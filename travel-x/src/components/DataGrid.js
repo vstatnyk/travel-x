@@ -25,7 +25,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { getImage } from "../GetImage";
+import { getFile } from "../GetFile";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -34,7 +34,6 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { updateEntity } from "../Update";
 import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
-import { getManifest } from "../GetManifest";
 import arthasman from "./images/ArthasManifest.pdf";
 import lionelman from "./images/LionelManifest.pdf"
 import {
@@ -114,12 +113,12 @@ const DataDisplay = (props) => {
         setdmvData(res.DMV);
         setssData(res.SS);
         setdosData(res.DOS);
-        setdmvImageUrl(await getImage(res.DMV.imageId));
-        setdosImageUrl(await getImage(res.DOS.imageId));
+        setdmvImageUrl(await getFile(res.DMV.imageId));
+        setdosImageUrl(await getFile(res.DOS.imageId));
         setData(true);
         setEntityId(res._id);
         setdotData(res.DOT);
-        setManifestUrl(await getManifest(res.DOT.manifest));
+        setManifestUrl(await getFile(res.DOT.manifest));
         setMaskDob(res.DMV.dob);
         setMaskDlNum(res.DMV.dlNumber);
         setMaskPassNum(res.DOS.passportNumber);
