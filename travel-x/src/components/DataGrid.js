@@ -35,7 +35,7 @@ import { updateEntity } from "../Update";
 import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
 import arthasman from "./images/ArthasManifest.pdf";
-import lionelman from "./images/LionelManifest.pdf"
+import lionelman from "./images/LionelManifest.pdf";
 import {
   Document,
   Page,
@@ -43,8 +43,8 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import InputMask from "react-input-mask";
-import LoadingButton from '@mui/lab/LoadingButton';
-import SaveIcon from '@mui/icons-material/Save';
+import LoadingButton from "@mui/lab/LoadingButton";
+import SaveIcon from "@mui/icons-material/Save";
 import Save from "@mui/icons-material/Save";
 //import { rgbToHex } from '@mui/material';
 
@@ -119,11 +119,19 @@ const DataDisplay = (props) => {
         setEntityId(res._id);
         setdotData(res.DOT);
         setManifestUrl(await getFile(res.DOT.manifest));
+        console.log(manifestUrl);
         setMaskDob(res.DMV.dob);
         setMaskDlNum(res.DMV.dlNumber);
         setMaskPassNum(res.DOS.passportNumber);
         setMaskPassExp(res.DOS.passportExp);
         setMaskName(res.DMV.name);
+        setUpdateData({
+          name: res.DMV.name,
+          dob: res.DMV.dob,
+          dlNumber: res.DMV.dlNumber,
+          passportNumber: res.DOS.passportNumber,
+          passportExp: res.DOS.passportExp,
+        });
       });
     } catch {
       setData(false);
@@ -148,7 +156,7 @@ const DataDisplay = (props) => {
   ];
 
   const MyDoc = (
-    <Document file={manifestUrl}>
+    <Document file={{ url: manifestUrl }}>
       <Page pageNumber={1} />
     </Document>
   );
@@ -241,10 +249,8 @@ const DataDisplay = (props) => {
                 <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
                 <Item>Flight Number: {dotData.flightNum}</Item>
                 <Item>
-                  <a href={manifestUrl}>Download Flight Manifest</a>/ 
-                  <a href={lionelman} target="_blank" rel="noreferrer">
-                    Open Flight Manifest
-                  </a>
+                  <a href={manifestUrl}>Download Flight Manifest</a>/
+                  <a href={"https://www.africau.edu/images/default/sample.pdf"} target="_blank">Download Flight Manifest</a>
                 </Item>
               </Stack>
             </CardContent>
@@ -378,8 +384,18 @@ const DataDisplay = (props) => {
                   </InputMask>
                 </DialogContent>
                 <DialogActions>
-                  <Button size="large" onClick={handleClose}>Cancel</Button>
-                  <LoadingButton size="large" onClick={handleUpdate} loading={loading} startIcon={<SaveIcon />} loadingPosition="start">Save</LoadingButton>
+                  <Button size="large" onClick={handleClose}>
+                    Cancel
+                  </Button>
+                  <LoadingButton
+                    size="large"
+                    onClick={handleUpdate}
+                    loading={loading}
+                    startIcon={<SaveIcon />}
+                    loadingPosition="start"
+                  >
+                    Save
+                  </LoadingButton>
                 </DialogActions>
               </Dialog>
             </CardActions>
