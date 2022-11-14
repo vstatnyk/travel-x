@@ -36,12 +36,6 @@ import Slide from "@mui/material/Slide";
 import { width } from "@mui/system";
 import arthasman from "./images/ArthasManifest.pdf";
 import lionelman from "./images/LionelManifest.pdf";
-import {
-  Document,
-  Page,
-  BlobProvider,
-  PDFDownloadLink,
-} from "@react-pdf/renderer";
 import InputMask from "react-input-mask";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
@@ -154,16 +148,6 @@ const DataDisplay = (props) => {
       dosData.passportExp
     ),
   ];
-
-  const MyDoc = (
-    <Document file={{ url: manifestUrl }}>
-      <Page pageNumber={1} />
-    </Document>
-  );
-
-  const openPDF = (url) => {
-    window.open(url, "_blank");
-  };
 
   if (data) {
     return (

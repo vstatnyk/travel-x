@@ -6,6 +6,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
+import LoadingButton from "./LoadingButton";
 
 const EntryBox = () => {
   const [ssNum, setSSN] = React.useState(null);
@@ -40,6 +41,7 @@ const EntryBox = () => {
                         <IconButton edge="end" color="primary" type="submit">
                           <GridSearchIcon />
                         </IconButton>
+                        {/* <LoadingButton>Click</LoadingButton> */}
                       </InputAdornment>
                     ),
                   }}
