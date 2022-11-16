@@ -6,7 +6,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Container from "@mui/material/Container";
 import TextField from "@mui/material/TextField";
-import LoadingButton from "./LoadingButton";
+import LinearProgress from "@mui/material/LinearProgress";
+import { Backdrop, CircularProgress } from "@mui/material";
 
 const EntryBox = () => {
   const [ssNum, setSSN] = React.useState(null);
@@ -19,6 +20,7 @@ const EntryBox = () => {
     setValue(ssNum);
     //console.log(ssNum);
   };
+
   return (
     <Container>
       <div>

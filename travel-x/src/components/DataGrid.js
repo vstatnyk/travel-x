@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import {
+  Backdrop,
   CircularProgress,
   Divider,
   LinearProgress,
@@ -39,7 +40,6 @@ import lionelman from "./images/LionelManifest.pdf";
 import InputMask from "react-input-mask";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
-import Save from "@mui/icons-material/Save";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -53,10 +53,6 @@ const Item = styled(Paper)(({ theme }) => ({
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
-
-function createData(name, dob, dlNumber, passportNumber, passportExp) {
-  return { name, dob, dlNumber, passportNumber, passportExp };
-}
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms)); // Delay for specified amount of time(ms).
 
@@ -78,6 +74,7 @@ const DataDisplay = (props) => {
   const [maskPassExp, setMaskPassExp] = React.useState([]);
   const [maskName, setMaskName] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [backdropLoading, setBackdropLoading] = React.useState(true);
 
   const handleClickOpen = () => {
     setMaskName(dmvData.name);
@@ -126,6 +123,7 @@ const DataDisplay = (props) => {
           passportNumber: res.DOS.passportNumber,
           passportExp: res.DOS.passportExp,
         });
+        setBackdropLoading(false);
       });
     } catch {
       setData(false);
@@ -133,280 +131,241 @@ const DataDisplay = (props) => {
       setssData("could not return any values");
       setdosData("could not return any values");
     }
-  }, [props.ssn]);
+  }, [props.ssn, manifestUrl]);
 
   React.useEffect(() => {
     getData();
   }, [getData]);
 
-  const rows = [
-    createData(
-      dmvData.name,
-      dosData.dob,
-      dmvData.dlNumber,
-      dosData.passportNumber,
-      dosData.passportExp
-    ),
-  ];
-
-  if (data) {
-    return (
-      // bgcolor: 'rgb(28,54,100)'
-      <div className="Breakdown">
-        {/* <Box
-        sx={{
-          paddingLeft: "1%",
-          paddingRight: "1%",
-          width: "100%",
-          mt: 3,
-          // position: "absolute",
-          right: 0,
-          flexGrow: 100,
-        }}
-        > */}
-        <div className="DMV_img">
-          <Card sx={{ maxWidth: "100%" }}>
-            <Typography
-              variant="body1"
-              color="text.primary"
-              fontSize={40}
-              textAlign="center"
-            >
-              {props.dept}
-            </Typography>
-            <CardMedia
-              className="position"
-              component="img"
-              image={dmvImageUrl}
-              alt="image Unavailable"
-            />
-          </Card>
-        </div>
-        <div className="PersonInfo">
-          {/* <TableContainer component={Paper} elevation={20} sx={{ backgroundColor: "burlywood" }}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>Full Name</TableCell>
-                  <TableCell align="right">Date of Birth</TableCell>
-                  <TableCell align="right">Driver's License Number</TableCell>
-                  <TableCell align="right">Passport Number</TableCell>
-                  <TableCell align="right">Passport Expiration Date</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows.map((row) => (
-                  <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="right">{row.dob}</TableCell>
-                    <TableCell align="right">{row.dlNumber}</TableCell>
-                    <TableCell align="right">{row.passportNumber}</TableCell>
-                    <TableCell align="right">{row.passportExp}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer> */}
-          <Card elevation={15} sx={{ backgroundColor: "burlywood" }}>
-            <CardContent>
-              <Typography gutterBottom variant="h4" component="div">
-                {dmvData.name}
+  return (
+    <div className="Breakdown">
+      {backdropLoading ? (
+        <LinearProgress
+          sx={{
+            mb: 131,
+            width: 300,
+            backgroundColor: "#eedbc3",
+            "& .MuiLinearProgress-bar": { backgroundColor: "burlywood" },
+          }}
+        />
+      ) : (
+        <div className="Breakdown">
+          <div className="DMV_img">
+            <Card sx={{ maxWidth: "100%" }}>
+              <Typography
+                variant="body1"
+                color="text.primary"
+                fontSize={40}
+                textAlign="center"
+              >
+                {props.dept}
               </Typography>
-              <Stack
-                direction="column"
-                divider={
-                  <Divider
-                    orientation="horizontal"
-                    flexItem
-                    style={{ backgroundColor: "black" }}
-                  />
-                }
-                spacing={2}
+              <CardMedia
+                className="position"
+                component="img"
+                image={dmvImageUrl}
+                alt="image Unavailable"
+              />
+            </Card>
+          </div>
+          <div className="PersonInfo">
+            <Card elevation={15} sx={{ backgroundColor: "burlywood" }}>
+              <CardContent>
+                <Typography gutterBottom variant="h4" component="div">
+                  {dmvData.name}
+                </Typography>
+                <Stack
+                  direction="column"
+                  divider={
+                    <Divider
+                      orientation="horizontal"
+                      flexItem
+                      style={{ backgroundColor: "black" }}
+                    />
+                  }
+                  spacing={2}
+                >
+                  <Item>Date of Birth: {dosData.dob}</Item>
+                  <Item>Driver's License Number: {dmvData.dlNumber}</Item>
+                  <Item>Passport Number: {dosData.passportNumber}</Item>
+                  <Item>Passport Expiration Date: {dosData.passportExp}</Item>
+                  <Item>Flight Departure Time: {dotData.departTime}</Item>
+                  <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
+                  <Item>Flight Number: {dotData.flightNum}</Item>
+                  <Item>
+                    <a href={manifestUrl}>Download Flight Manifest</a>
+                  </Item>
+                </Stack>
+              </CardContent>
+              <CardActions>
+                <Button size="small" onClick={handleClickOpen}>
+                  Edit data
+                </Button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  TransitionComponent={Transition}
+                >
+                  <DialogTitle>Edit Data</DialogTitle>
+                  <DialogContent>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Name"
+                      fullWidth
+                      variant="filled"
+                      value={maskName}
+                      onChange={(e) => {
+                        let newValue = { name: e.target.value };
+                        setUpdateData((updateData) => ({
+                          ...updateData,
+                          ...newValue,
+                        }));
+                        setMaskName(e.target.value);
+                      }}
+                    />
+                    <InputMask
+                      mask="99/99/9999"
+                      maskChar=""
+                      value={maskDob}
+                      onChange={(e) => {
+                        let newValue = { dob: e.target.value };
+                        setUpdateData((updateData) => ({
+                          ...updateData,
+                          ...newValue,
+                        }));
+                        setMaskDob(e.target.value);
+                      }}
+                    >
+                      {() => (
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          id="dob"
+                          label="Date of Birth"
+                          fullWidth
+                          variant="filled"
+                          placeholder="MM/DD/YYYY"
+                        />
+                      )}
+                    </InputMask>
+                    <InputMask
+                      mask="999999999"
+                      value={maskDlNum}
+                      maskChar=""
+                      onChange={(e) => {
+                        let newValue = { dlNumber: e.target.value };
+                        setUpdateData((updateData) => ({
+                          ...updateData,
+                          ...newValue,
+                        }));
+                        setMaskDlNum(e.target.value);
+                      }}
+                    >
+                      {() => (
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          id="dlNumber"
+                          label="Driver's License Number"
+                          fullWidth
+                          variant="filled"
+                          placeholder="xxxxxxxxx"
+                        />
+                      )}
+                    </InputMask>
+                    <InputMask
+                      mask="999999999"
+                      value={maskPassNum}
+                      maskChar=""
+                      onChange={(e) => {
+                        let newValue = { passportNumber: e.target.value };
+                        setUpdateData((updateData) => ({
+                          ...updateData,
+                          ...newValue,
+                        }));
+                        setMaskPassNum(e.target.value);
+                      }}
+                    >
+                      {() => (
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          id="passportNumber"
+                          label="Passport Number"
+                          fullWidth
+                          variant="filled"
+                          placeholder="xxxxxxxxx"
+                        />
+                      )}
+                    </InputMask>
+                    <InputMask
+                      mask="99/99/9999"
+                      value={maskPassExp}
+                      maskChar=""
+                      onChange={(e) => {
+                        let newValue = { passportExp: e.target.value };
+                        setUpdateData((updateData) => ({
+                          ...updateData,
+                          ...newValue,
+                        }));
+                        setMaskPassExp(e.target.value);
+                      }}
+                    >
+                      {() => (
+                        <TextField
+                          autoFocus
+                          margin="dense"
+                          id="passportExp"
+                          label="Passport Expiration Date"
+                          fullWidth
+                          variant="filled"
+                          placeholder="MM/DD/YYYY"
+                        />
+                      )}
+                    </InputMask>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button size="large" onClick={handleClose}>
+                      Cancel
+                    </Button>
+                    <LoadingButton
+                      size="large"
+                      onClick={handleUpdate}
+                      loading={loading}
+                      startIcon={<SaveIcon />}
+                      loadingPosition="start"
+                    >
+                      Save
+                    </LoadingButton>
+                  </DialogActions>
+                </Dialog>
+              </CardActions>
+            </Card>
+          </div>
+          <div className="DOS_img">
+            <Card sx={{ maxWidth: "100%" }}>
+              <Typography
+                variant="body1"
+                color="text.primary"
+                fontSize={40}
+                textAlign="center"
               >
-                <Item>Date of Birth: {dosData.dob}</Item>
-                <Item>Driver's License Number: {dmvData.dlNumber}</Item>
-                <Item>Passport Number: {dosData.passportNumber}</Item>
-                <Item>Passport Expiration Date: {dosData.passportExp}</Item>
-                <Item>Flight Departure Time: {dotData.departTime}</Item>
-                <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
-                <Item>Flight Number: {dotData.flightNum}</Item>
-                <Item>
-                  <a href={manifestUrl}>Download Flight Manifest</a>/
-                  <a href={"https://www.africau.edu/images/default/sample.pdf"} target="_blank">Download Flight Manifest</a>
-                </Item>
-              </Stack>
-            </CardContent>
-            <CardActions>
-              <Button size="small" onClick={handleClickOpen}>
-                Edit data
-              </Button>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                TransitionComponent={Transition}
-              >
-                <DialogTitle>Edit Data</DialogTitle>
-                <DialogContent>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Name"
-                    fullWidth
-                    variant="filled"
-                    value={maskName}
-                    onChange={(e) => {
-                      let newValue = { name: e.target.value };
-                      setUpdateData((updateData) => ({
-                        ...updateData,
-                        ...newValue,
-                      }));
-                      setMaskName(e.target.value);
-                    }}
-                  />
-                  <InputMask
-                    mask="99/99/9999"
-                    maskChar=""
-                    value={maskDob}
-                    onChange={(e) => {
-                      let newValue = { dob: e.target.value };
-                      setUpdateData((updateData) => ({
-                        ...updateData,
-                        ...newValue,
-                      }));
-                      setMaskDob(e.target.value);
-                    }}
-                  >
-                    {() => (
-                      <TextField
-                        autoFocus
-                        margin="dense"
-                        id="dob"
-                        label="Date of Birth"
-                        fullWidth
-                        variant="filled"
-                        placeholder="MM/DD/YYYY"
-                      />
-                    )}
-                  </InputMask>
-                  <InputMask
-                    mask="999999999"
-                    value={maskDlNum}
-                    maskChar=""
-                    onChange={(e) => {
-                      let newValue = { dlNumber: e.target.value };
-                      setUpdateData((updateData) => ({
-                        ...updateData,
-                        ...newValue,
-                      }));
-                      setMaskDlNum(e.target.value);
-                    }}
-                  >
-                    {() => (
-                      <TextField
-                        autoFocus
-                        margin="dense"
-                        id="dlNumber"
-                        label="Driver's License Number"
-                        fullWidth
-                        variant="filled"
-                        placeholder="xxxxxxxxx"
-                      />
-                    )}
-                  </InputMask>
-                  <InputMask
-                    mask="999999999"
-                    value={maskPassNum}
-                    maskChar=""
-                    onChange={(e) => {
-                      let newValue = { passportNumber: e.target.value };
-                      setUpdateData((updateData) => ({
-                        ...updateData,
-                        ...newValue,
-                      }));
-                      setMaskPassNum(e.target.value);
-                    }}
-                  >
-                    {() => (
-                      <TextField
-                        autoFocus
-                        margin="dense"
-                        id="passportNumber"
-                        label="Passport Number"
-                        fullWidth
-                        variant="filled"
-                        placeholder="xxxxxxxxx"
-                      />
-                    )}
-                  </InputMask>
-                  <InputMask
-                    mask="99/99/9999"
-                    value={maskPassExp}
-                    maskChar=""
-                    onChange={(e) => {
-                      let newValue = { passportExp: e.target.value };
-                      setUpdateData((updateData) => ({
-                        ...updateData,
-                        ...newValue,
-                      }));
-                      setMaskPassExp(e.target.value);
-                    }}
-                  >
-                    {() => (
-                      <TextField
-                        autoFocus
-                        margin="dense"
-                        id="passportExp"
-                        label="Passport Expiration Date"
-                        fullWidth
-                        variant="filled"
-                        placeholder="MM/DD/YYYY"
-                      />
-                    )}
-                  </InputMask>
-                </DialogContent>
-                <DialogActions>
-                  <Button size="large" onClick={handleClose}>
-                    Cancel
-                  </Button>
-                  <LoadingButton
-                    size="large"
-                    onClick={handleUpdate}
-                    loading={loading}
-                    startIcon={<SaveIcon />}
-                    loadingPosition="start"
-                  >
-                    Save
-                  </LoadingButton>
-                </DialogActions>
-              </Dialog>
-            </CardActions>
-          </Card>
+                {props.dept}
+              </Typography>
+              <CardMedia
+                className="position"
+                component="img"
+                image={dosImageUrl}
+                alt="image Unavailable"
+              />
+            </Card>
+          </div>
         </div>
-        <div className="DOS_img">
-          <Card sx={{ maxWidth: "100%" }}>
-            <Typography
-              variant="body1"
-              color="text.primary"
-              fontSize={40}
-              textAlign="center"
-            >
-              {props.dept}
-            </Typography>
-            <CardMedia
-              className="position"
-              component="img"
-              image={dosImageUrl}
-              alt="image Unavailable"
-            />
-          </Card>
-        </div>
-        {/* </Box> */}
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 };
 
 export default DataDisplay;
