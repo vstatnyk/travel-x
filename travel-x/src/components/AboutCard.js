@@ -55,6 +55,7 @@ const AboutCard = (props) => {
                 <CardContent>
                     <Typography paragraph>
                         {props.aboutInfo}
+                        <a href={`mailto:` + props.email}>{props.email}</a>.
                     </Typography>
                 </CardContent>
             </Collapse>

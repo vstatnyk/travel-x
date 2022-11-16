@@ -55,7 +55,7 @@ const Contact = () => {
         Contact Us
       </Typography>
       <Grid>
-        <Card style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
+        <Card elevation={5} style={{ maxWidth: 450, padding: "20px 5px", margin: "0 auto" }}>
           <CardContent>
             <Typography gutterBottom variant="h5">
               Send us an email.
@@ -123,8 +123,9 @@ const Contact = () => {
                 </Grid>
                 <Grid item xs={12} mb={-2}>
                   <Button
+                    style={{ backgroundColor: 'burlywood' }}
                     type="submit"
-                    variant="outlined"
+                    variant="contained"
                     color="primary"
                     fullWidth
                   >

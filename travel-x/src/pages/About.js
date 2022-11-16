@@ -43,21 +43,24 @@ const About = () => {
             <AboutCard 
               imgPath={brianImg}
               name={"Brian Beilby"}
-              aboutInfo={"I am attending CSUS, studying Computer Science. This is my first big web-development project but, in the past, I have worked on many projects for an internship organization which is where most of my practical experience has come from. You can contact me directly at brianbeilby98@gmail.com."}
+              aboutInfo={"I am attending CSUS, studying Computer Science. This is my first big web-development project but, in the past, I have worked on many projects for an internship organization which is where most of my practical experience has come from. You can contact me directly at "}
+              email={"brianbeilby98@gmail.com"}
             />
           </Grid>
           <Grid item xs="auto">
             <AboutCard 
               imgPath={moshImg}
               name={"Moshley Marcelo"}
-              aboutInfo={"I am a CSU Sacramento student majoring in Computer Science. So far most of my experience has come from recent coursework I have completed in the past. One project involved the use of UNIX, I made a decision making game based off of the Oregon Trail game with the use of signed/unsigned jump statements, random number statements, & math calculations. Another project, involved a game screen with collision detection, 2d movement, character frames, & interaction with items. This project so far, is the first i've ever done utilizing JavaScript, I have worked on the back end of this project mostly adding photos to on the webpage & Vendia, getting the buttons on the website to work properly, & getting the webpage to not glitch out & function normally. I do intend on doing more within my major, including joining an internship, joining any clubs, learning more languages including Python, & keeping my coding skills up to date. Feel free to contact me @ moshleymarcelo11@yahoo.com."}
+              aboutInfo={"I am a CSU Sacramento student majoring in Computer Science. So far most of my experience has come from recent coursework I have completed in the past. One project involved the use of UNIX, I made a decision making game based off of the Oregon Trail game with the use of signed/unsigned jump statements, random number statements, & math calculations. Another project, involved a game screen with collision detection, 2d movement, character frames, & interaction with items. This project so far, is the first i've ever done utilizing JavaScript, I have worked on the back end of this project mostly adding photos to on the webpage & Vendia, getting the buttons on the website to work properly, & getting the webpage to not glitch out & function normally. I do intend on doing more within my major, including joining an internship, joining any clubs, learning more languages including Python, & keeping my coding skills up to date. Feel free to contact me @ "}
+              email={"moshleymarcelo11@yahoo.com"}
             />
           </Grid>
           <Grid item xs="auto">
             <AboutCard 
               imgPath={coltonImg}
               name={"Colton Carvalho"}
-              aboutInfo={"Currently I'm studying for a bachelor's degree in Computer Science at California State University, Sacramento. On this web project I worked on the backend code for data processing, editing the front end code on an incidental basis. Most of my experience in working on projects comes from: previous internship opportunities, such as working on cognitive and high frequency long range techonology in a 5G environment; freelance client-programmer requests; along with personal projects stemming upwards of 8 years back. Contact me directly at Coolguy1079@gmail.com."}
+              aboutInfo={"Currently I'm studying for a bachelor's degree in Computer Science at California State University, Sacramento. On this web project I worked on the backend code for data processing, editing the front end code on an incidental basis. Most of my experience in working on projects comes from: previous internship opportunities, such as working on cognitive and high frequency long range techonology in a 5G environment; freelance client-programmer requests; along with personal projects stemming upwards of 8 years back. Contact me directly at "}
+              email={"Coolguy1079@gmail.com"}
             />
           </Grid>
           <Grid item xs="auto">
