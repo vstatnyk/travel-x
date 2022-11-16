@@ -142,8 +142,9 @@ const DataDisplay = (props) => {
       {backdropLoading ? (
         <LinearProgress
           sx={{
-            mb: 131,
+            position: 'relative',
             width: 300,
+            bottom: 499,
             backgroundColor: "#eedbc3",
             "& .MuiLinearProgress-bar": { backgroundColor: "burlywood" },
           }}
