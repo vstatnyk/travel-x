@@ -169,13 +169,13 @@ a {
 .Breakdown{  
   height: 100%;
   width: 100%;
-  margin-top: 2%;
+  margin-top: 55%;
   font-size: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  position:absolute;
+  position:fixed;
   right: 0;
   flex-grow: 100;
   padding-left: 5%;
@@ -198,6 +198,13 @@ a {
   width: 100%;
   margin-top: 2%;
   float: center;
+}
+
+.loadBar{
+  margin-top: -0.1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* TODO: */

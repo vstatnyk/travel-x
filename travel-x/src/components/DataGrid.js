@@ -138,13 +138,11 @@ const DataDisplay = (props) => {
   }, [getData]);
 
   return (
-    <div className="Breakdown">
+    <div className="loadBar">
       {backdropLoading ? (
         <LinearProgress
           sx={{
-            position: 'relative',
             width: 300,
-            bottom: 499,
             backgroundColor: "#eedbc3",
             "& .MuiLinearProgress-bar": { backgroundColor: "burlywood" },
           }}
