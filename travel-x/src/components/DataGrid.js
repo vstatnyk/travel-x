@@ -40,6 +40,8 @@ import lionelman from "./images/LionelManifest.pdf";
 import InputMask from "react-input-mask";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
+import { compareFaces } from "../CompareImage";
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -56,6 +58,21 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms)); // Delay for specified amount of time(ms).
 
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      let encoded = reader.result.toString().replace(/^data:(.*,)?/, "");
+      if (encoded.length % 4 > 0) {
+        encoded += "=".repeat(4 - (encoded.length % 4));
+      }
+      resolve(encoded);
+    };
+    reader.onerror = (error) => reject(error);
+  });
+}
+
 const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
@@ -64,7 +81,7 @@ const DataDisplay = (props) => {
   const [dmvImageUrl, setdmvImageUrl] = React.useState([]);
   const [dosImageUrl, setdosImageUrl] = React.useState([]);
   const [entityId, setEntityId] = React.useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [editOpen, setEditOpen] = React.useState(false);
   const [updateData, setUpdateData] = React.useState([]);
   const [dotData, setdotData] = React.useState([]);
   const [manifestUrl, setManifestUrl] = React.useState([]);
@@ -75,18 +92,20 @@ const DataDisplay = (props) => {
   const [maskName, setMaskName] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [backdropLoading, setBackdropLoading] = React.useState(true);
+  const [compareRes, setCompareRes] = React.useState([]);
+  const [compareOpen, setCompareOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleEditOpen = () => {
     setMaskName(dmvData.name);
     setMaskDob(dmvData.dob);
     setMaskDlNum(dmvData.dlNumber);
     setMaskPassNum(dosData.passportNumber);
     setMaskPassExp(dosData.passportExp);
-    setOpen(true);
+    setEditOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleEditClose = () => {
+    setEditOpen(false);
   };
 
   const handleUpdate = async () => {
@@ -95,7 +114,28 @@ const DataDisplay = (props) => {
     await sleep(5000);
     setLoading(false);
     getData();
-    handleClose();
+    handleEditClose();
+  };
+
+  const handleFileUpload = async (e) => {
+    let reader = new FileReader();
+    let file = "";
+    reader.readAsArrayBuffer(e.target.files[0]);
+    reader.onload = async function () {
+      file = new Uint8Array(reader.result);
+      setCompareRes(await compareFaces(file, dmvData));
+    };
+    reader.onerror = function (error) {
+      console.log(error);
+    };
+  };
+
+  const handleCompareOpen = () => {
+    setCompareOpen(true);
+  };
+
+  const handleCompareClose = () => {
+    setCompareOpen(false);
   };
 
   const getData = React.useCallback(async () => {
@@ -197,12 +237,32 @@ const DataDisplay = (props) => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Button size="small" onClick={handleClickOpen}>
+                <Button size="small" onClick={handleEditOpen}>
                   Edit data
                 </Button>
+                <Button size="small" onClick={handleCompareOpen} style={{ marginLeft: 'auto' }}>
+                  Face Comparison
+                </Button>
                 <Dialog
-                  open={open}
-                  onClose={handleClose}
+                  open={compareOpen}
+                  onClose={handleCompareClose}
+                  TransitionComponent={Transition}
+                >
+                  <DialogTitle>Face Comparison</DialogTitle>
+                  <DialogContent>
+                    <Typography gutterBottom>
+                      Compare a picture taken during the Immigration process with photos provided by the agencies.
+                      Upload an image in the format of .png or .jpg.
+                    </Typography>
+                    <Button size="small" component="label" startIcon={<FileUploadOutlinedIcon />}>
+                      Upload
+                      <input type="file" hidden onChange={handleFileUpload} />
+                    </Button>
+                  </DialogContent>
+                </Dialog>
+                <Dialog
+                  open={editOpen}
+                  onClose={handleEditClose}
                   TransitionComponent={Transition}
                 >
                   <DialogTitle>Edit Data</DialogTitle>
@@ -326,7 +386,7 @@ const DataDisplay = (props) => {
                     </InputMask>
                   </DialogContent>
                   <DialogActions>
-                    <Button size="large" onClick={handleClose}>
+                    <Button size="large" onClick={handleEditClose}>
                       Cancel
                     </Button>
                     <LoadingButton

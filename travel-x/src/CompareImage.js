@@ -1,25 +1,25 @@
 const { RekognitionClient, CompareFacesCommand } = require("@aws-sdk/client-rekognition");
-const fs = require('fs');
-require('dotenv').config();
-// const lionel1 = require('../src/components/images/LionelDMV.png');
-// const lionel2 = require('../src/components/images/LionelDOS.png');
 
 
 const client = new RekognitionClient({
-  region: process.env.AWS_REGION,
+  region: process.env.REACT_APP_AWS_REGION,
   credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
   }
 });
 
-const compareFaces = async () => {
+export const compareFaces = async (source, targetData) => {
+    let fileName = targetData.name + 'DMV.jpg';
     const params = {
         "SourceImage": {
-            "Bytes": fs.readFileSync('../src/components/images/LionelDMV.png')
+            "Bytes": source
         },
         "TargetImage": {
-            "Bytes": fs.readFileSync('../src/components/images/brianbeilbypic.jpg')
+            "S3Object": {
+                "Bucket": 'travel-x',
+                "Name": fileName
+            }
         },
         "SimilarityThreshold": 70
     };
@@ -28,10 +28,8 @@ const compareFaces = async () => {
     
     try {
         const data = await client.send(command);
-        console.log(data);
+        return data;
     } catch (error) {
         console.log(error);
     }
 }
-
-compareFaces();
