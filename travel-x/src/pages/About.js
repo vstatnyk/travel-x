@@ -66,7 +66,7 @@ const About = () => {
           <Grid item xs="auto">
             <AboutCard 
               imgPath={img1}
-              name={"Test 4"}
+              name={"Alexzander Kemble"}
               aboutInfo={"This clown did some coding. What a nerd"}
             />
           </Grid>
@@ -87,7 +87,6 @@ const About = () => {
         </Grid>
       </Box>
     </Container>
-
   );
 };
 
