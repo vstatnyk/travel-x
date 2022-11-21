@@ -42,6 +42,7 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { compareFaces } from "../CompareImage";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import ComparePage from "./ComparePage";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -92,8 +93,9 @@ const DataDisplay = (props) => {
   const [maskName, setMaskName] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [backdropLoading, setBackdropLoading] = React.useState(true);
-  const [compareRes, setCompareRes] = React.useState([]);
+  const [faceMatches, setFaceMatches] = React.useState(false);
   const [compareOpen, setCompareOpen] = React.useState(false);
+  const [compareShow, setCompareShow] = React.useState(false);
 
   const handleEditOpen = () => {
     setMaskName(dmvData.name);
@@ -123,7 +125,13 @@ const DataDisplay = (props) => {
     reader.readAsArrayBuffer(e.target.files[0]);
     reader.onload = async function () {
       file = new Uint8Array(reader.result);
-      setCompareRes(await compareFaces(file, dmvData));
+      await compareFaces(file, dmvData).then((res) => {
+        console.log(res.FaceMatches);
+        if (res.FaceMatches.length === 1) {
+          setFaceMatches(true);
+        }
+        setCompareShow(true);
+      });
     };
     reader.onerror = function (error) {
       console.log(error);
@@ -258,6 +266,13 @@ const DataDisplay = (props) => {
                       Upload
                       <input type="file" hidden onChange={handleFileUpload} />
                     </Button>
+                    <div>
+                      {compareShow ? (
+                        <p>
+                          <ComparePage data={faceMatches} />
+                        </p>
+                      ) : null}
+                    </div>
                   </DialogContent>
                 </Dialog>
                 <Dialog
