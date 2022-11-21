@@ -21,13 +21,21 @@ import ResponsiveAppBar from "./components/AppBar";
 
 const DarkModeContext = React.createContext({ toggleDarkMode: () => {} });
 
+export function isLightMode() {
+  return (window.$pageMode === "light");
+}
+
 export function DarkModeButton() {
   const darkMode = React.useContext(DarkModeContext);
+
   return (
+
     <FormControlLabel
       label="Dark Mode"
       control={<Switch />}
-      onChange={darkMode.toggleDarkMode}
+      onChange={
+        darkMode.toggleDarkMode
+      }
     />
   );
 }
@@ -53,6 +61,8 @@ function App() {
       }),
     [mode]
   );
+
+  window.$pageMode = mode;
 
   const { isLoading } = useAuth0();
 
