@@ -74,6 +74,14 @@ function getBase64(file) {
   });
 }
 
+function cmpData(dmvData, ssData, dosData){
+  let dob = false
+  let na = false
+  if (dmvData.dob === ssData.dob && ssData.dob === dosData.dob){dob = true}
+  if (dmvData.name === ssData.name && ssData.name === dosData.name){na = true}
+  return[na, dob]
+}
+
 const DataDisplay = (props) => {
   const [dmvData, setdmvData] = React.useState([]);
   const [ssData, setssData] = React.useState([]);
@@ -96,6 +104,7 @@ const DataDisplay = (props) => {
   const [faceMatches, setFaceMatches] = React.useState(false);
   const [compareOpen, setCompareOpen] = React.useState(false);
   const [compareShow, setCompareShow] = React.useState(false);
+  const [compareData, setCompareData] = React.useState(false);
 
   const handleEditOpen = () => {
     setMaskName(dmvData.name);
@@ -173,6 +182,8 @@ const DataDisplay = (props) => {
         });
         setBackdropLoading(false);
       });
+      setCompareData(cmpData(dmvData, ssData, dosData))
+      console.log(compareData)
     } catch {
       setData(false);
       setdmvData("could not return any values");
