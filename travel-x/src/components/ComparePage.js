@@ -10,16 +10,16 @@ const ComparePage = (props) => {
         <div>
             {props.data ? (
                 <div>
-                    <CheckCircleIcon />
+                    <CheckCircleIcon style={{ color: 'green' }}/>
                     <Typography>
-                        example1
+                        Success! The face in the uploaded image matches the photos in the agencies!
                     </Typography>
                 </div>
             ) : (
                 <div>
-                    <CloseIcon />
+                    <CloseIcon style={{ color: 'red' }}/>
                     <Typography>
-                        example2
+                        Failure! The face in the uploaded image does not match the photos in the agencies!
                     </Typography>
                 </div>
             )}

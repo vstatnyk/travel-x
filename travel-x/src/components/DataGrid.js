@@ -190,7 +190,7 @@ const DataDisplay = (props) => {
       setssData("could not return any values");
       setdosData("could not return any values");
     }
-  }, [props.ssn, manifestUrl]);
+  }, [props.ssn, manifestUrl, compareData, dmvData, dosData, ssData]);
 
   React.useEffect(() => {
     getData();
@@ -277,6 +277,7 @@ const DataDisplay = (props) => {
                       Upload
                       <input type="file" hidden onChange={handleFileUpload} />
                     </Button>
+                    <Divider />
                     <div>
                       {compareShow ? (
                         <p>
