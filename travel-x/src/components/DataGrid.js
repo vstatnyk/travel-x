@@ -43,6 +43,7 @@ import SaveIcon from "@mui/icons-material/Save";
 import { compareFaces } from "../CompareImage";
 import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
 import ComparePage from "./ComparePage";
+import EditIcon from '@mui/icons-material/Edit';
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -58,21 +59,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms)); // Delay for specified amount of time(ms).
-
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      let encoded = reader.result.toString().replace(/^data:(.*,)?/, "");
-      if (encoded.length % 4 > 0) {
-        encoded += "=".repeat(4 - (encoded.length % 4));
-      }
-      resolve(encoded);
-    };
-    reader.onerror = (error) => reject(error);
-  });
-}
 
 function cmpData(dmvData, ssData, dosData){
   let dob = false
@@ -129,22 +115,29 @@ const DataDisplay = (props) => {
   };
 
   const handleFileUpload = async (e) => {
-    let reader = new FileReader();
-    let file = "";
-    reader.readAsArrayBuffer(e.target.files[0]);
-    reader.onload = async function () {
-      file = new Uint8Array(reader.result);
-      await compareFaces(file, dmvData).then((res) => {
-        console.log(res.FaceMatches);
-        if (res.FaceMatches.length === 1) {
-          setFaceMatches(true);
-        }
-        setCompareShow(true);
-      });
-    };
-    reader.onerror = function (error) {
-      console.log(error);
-    };
+    setCompareShow(false);
+    console.log(e);
+    if (e.target.files[0].type.match('image.*')) {
+      let reader = new FileReader();
+      let file = "";
+      reader.readAsArrayBuffer(e.target.files[0]);
+      reader.onload = async function () {
+        file = new Uint8Array(reader.result);
+        await compareFaces(file, dmvData).then((res) => {
+          if (res.FaceMatches.length === 1) {
+            setFaceMatches(true);
+          } else {
+            setFaceMatches(false);
+          }
+          setCompareShow(true);
+        });
+      };
+      reader.onerror = function (error) {
+        console.log(error);
+      };
+    } else {
+      alert("Invalid File Type. Accepted file types are .png and .jpg.");
+    }
   };
 
   const handleCompareOpen = () => {
@@ -190,7 +183,7 @@ const DataDisplay = (props) => {
       setssData("could not return any values");
       setdosData("could not return any values");
     }
-  }, [props.ssn, manifestUrl, compareData, dmvData, dosData, ssData]);
+  }, [props.ssn, manifestUrl]);
 
   React.useEffect(() => {
     getData();
@@ -267,7 +260,8 @@ const DataDisplay = (props) => {
                   onClose={handleCompareClose}
                   TransitionComponent={Transition}
                 >
-                  <DialogTitle>Face Comparison</DialogTitle>
+                  <DialogTitle variant="h5" style={{ textAlign: 'center' }}>Face Comparison</DialogTitle>
+                  <Divider />
                   <DialogContent>
                     <Typography gutterBottom>
                       Compare a picture taken during the Immigration process with photos provided by the agencies.
@@ -280,9 +274,7 @@ const DataDisplay = (props) => {
                     <Divider />
                     <div>
                       {compareShow ? (
-                        <p>
                           <ComparePage data={faceMatches} />
-                        </p>
                       ) : null}
                     </div>
                   </DialogContent>
@@ -292,7 +284,7 @@ const DataDisplay = (props) => {
                   onClose={handleEditClose}
                   TransitionComponent={Transition}
                 >
-                  <DialogTitle>Edit Data</DialogTitle>
+                  <DialogTitle variant="h5" style={{ textAlign: 'center' }}>Edit Data</DialogTitle>
                   <DialogContent>
                     <TextField
                       autoFocus
