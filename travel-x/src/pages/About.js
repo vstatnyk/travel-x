@@ -67,7 +67,8 @@ const About = () => {
             <AboutCard 
               imgPath={img1}
               name={"Alexzander Kemble"}
-              aboutInfo={"This clown did some coding. What a nerd"}
+              aboutInfo={"Front End (dark mode, pages, etc)"}
+              email={"akemble@csus.edu"}
             />
           </Grid>
           <Grid item xs="auto">
