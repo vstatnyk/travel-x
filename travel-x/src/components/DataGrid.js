@@ -41,9 +41,9 @@ import InputMask from "react-input-mask";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { compareFaces } from "../CompareImage";
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined';
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import ComparePage from "./ComparePage";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 //import { rgbToHex } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -60,12 +60,16 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms)); // Delay for specified amount of time(ms).
 
-function cmpData(dmvData, ssData, dosData){
-  let dob = false
-  let na = false
-  if (dmvData.dob === ssData.dob && ssData.dob === dosData.dob){dob = true}
-  if (dmvData.name === ssData.name && ssData.name === dosData.name){na = true}
-  return[na, dob]
+function cmpData(dmvData, ssData, dosData) {
+  let dob = false;
+  let na = false;
+  if (dmvData.dob === ssData.dob && ssData.dob === dosData.dob) {
+    dob = true;
+  }
+  if (dmvData.name === ssData.name && ssData.name === dosData.name) {
+    na = true;
+  }
+  return [na, dob];
 }
 
 const DataDisplay = (props) => {
@@ -117,7 +121,7 @@ const DataDisplay = (props) => {
   const handleFileUpload = async (e) => {
     setCompareShow(false);
     console.log(e);
-    if (e.target.files[0].type.match('image.*')) {
+    if (e.target.files[0].type.match("image.*")) {
       let reader = new FileReader();
       let file = "";
       reader.readAsArrayBuffer(e.target.files[0]);
@@ -175,8 +179,8 @@ const DataDisplay = (props) => {
         });
         setBackdropLoading(false);
       });
-      setCompareData(cmpData(dmvData, ssData, dosData))
-      console.log(compareData)
+      setCompareData(cmpData(dmvData, ssData, dosData));
+      console.log(compareData);
     } catch {
       setData(false);
       setdmvData("could not return any values");
@@ -249,10 +253,27 @@ const DataDisplay = (props) => {
                 </Stack>
               </CardContent>
               <CardActions>
-                <Button size="small" onClick={handleEditOpen}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={handleEditOpen}
+                  sx={{
+                    backgroundColor: "#303030",
+                    "&:hover": { backgroundColor: "#fff", color: "#303030" },
+                  }}
+                >
                   Edit data
                 </Button>
-                <Button size="small" onClick={handleCompareOpen} style={{ marginLeft: 'auto' }}>
+                <Button
+                  variant="contained"
+                  size="small"
+                  onClick={handleCompareOpen}
+                  style={{ marginLeft: "auto" }}
+                  sx={{
+                    backgroundColor: "#303030",
+                    "&:hover": { backgroundColor: "#fff", color: "#303030" },
+                  }}
+                >
                   Face Comparison
                 </Button>
                 <Dialog
@@ -260,22 +281,27 @@ const DataDisplay = (props) => {
                   onClose={handleCompareClose}
                   TransitionComponent={Transition}
                 >
-                  <DialogTitle variant="h5" style={{ textAlign: 'center' }}>Face Comparison</DialogTitle>
+                  <DialogTitle variant="h5" style={{ textAlign: "center" }}>
+                    Face Comparison
+                  </DialogTitle>
                   <Divider />
                   <DialogContent>
                     <Typography gutterBottom>
-                      Compare a picture taken during the Immigration process with photos provided by the agencies.
-                      Upload an image in the format of .png or .jpg.
+                      Compare a picture taken during the Immigration process
+                      with photos provided by the agencies. Upload an image in
+                      the format of .png or .jpg.
                     </Typography>
-                    <Button size="small" component="label" startIcon={<FileUploadOutlinedIcon />}>
+                    <Button
+                      size="small"
+                      component="label"
+                      startIcon={<FileUploadOutlinedIcon />}
+                    >
                       Upload
                       <input type="file" hidden onChange={handleFileUpload} />
                     </Button>
                     <Divider />
                     <div>
-                      {compareShow ? (
-                          <ComparePage data={faceMatches} />
-                      ) : null}
+                      {compareShow ? <ComparePage data={faceMatches} /> : null}
                     </div>
                   </DialogContent>
                 </Dialog>
@@ -284,7 +310,9 @@ const DataDisplay = (props) => {
                   onClose={handleEditClose}
                   TransitionComponent={Transition}
                 >
-                  <DialogTitle variant="h5" style={{ textAlign: 'center' }}>Edit Data</DialogTitle>
+                  <DialogTitle variant="h5" style={{ textAlign: "center" }}>
+                    Edit Data
+                  </DialogTitle>
                   <DialogContent>
                     <TextField
                       autoFocus
