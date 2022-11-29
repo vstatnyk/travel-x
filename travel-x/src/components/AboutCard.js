@@ -54,8 +54,10 @@ const AboutCard = (props) => {
             <Collapse in={expanded} timeout = "auto" unmountOnExit>
                 <CardContent>
                     <Typography paragraph>
-                        {props.aboutInfo}
-                        <a href={`mailto:` + props.email}>{props.email}</a>.
+                        Worked on: {props.aboutInfo}
+                    </Typography>
+                    <Typography paragraph>
+                        Email: <a href={`mailto:` + props.email}>{props.email}</a>.
                     </Typography>
                 </CardContent>
             </Collapse>
