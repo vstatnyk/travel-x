@@ -4,7 +4,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import * as React from "react";
 
 const ComparePage = (props) => {
-    console.log(props.data);
+  console.log(props.data);
   return (
     <div>
       {props.data ? (
