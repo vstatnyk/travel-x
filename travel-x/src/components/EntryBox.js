@@ -43,7 +43,6 @@ const EntryBox = () => {
                         <IconButton edge="end" color="primary" type="submit">
                           <GridSearchIcon />
                         </IconButton>
-                        {/* <LoadingButton>Click</LoadingButton> */}
                       </InputAdornment>
                     ),
                   }}

@@ -15,7 +15,7 @@ import AuthenticationButton from "./authButton";
 import { DarkModeButton } from "../App";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Icon } from "@mui/material";
-import logo from './images/logo8.svg'
+import logo from "./images/logo8.svg";
 
 const pages = ["Search", "About", "Contact"];
 
@@ -59,7 +59,7 @@ function ResponsiveAppBar() {
               letterSpacing: ".1rem",
               color: "inherit",
               textDecoration: "none",
-              boxShadow: "none"
+              boxShadow: "none",
             }}
           >
             <Link to="/" style={{ textDecoration: "none", color: "#FFF" }}>
@@ -174,17 +174,12 @@ function ResponsiveAppBar() {
             >
               <MenuItem onClick={handleCloseUserMenu}>
                 <Typography textAlign="center">
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={`/Profile`}
-                  >
+                  <Link style={{ textDecoration: "none" }} to={`/Profile`}>
                     Profile
                   </Link>
                 </Typography>
               </MenuItem>
-              <MenuItem
-                onClick={handleCloseUserMenu}
-              >
+              <MenuItem onClick={handleCloseUserMenu}>
                 <AuthenticationButton />
               </MenuItem>
             </Menu>
