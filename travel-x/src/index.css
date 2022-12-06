@@ -87,9 +87,11 @@ label {
   margin-top: 2%;
   height: 100%;
   width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 3px solid RED;   */
 }
 
 .FailPerson{
@@ -100,7 +102,7 @@ label {
   justify-content: center;
   align-items: center;
   text-align: center;
-  border: 30px solid RED;  
+  border: 32px solid RED;  
   border-radius: 25px;;
 }
 
@@ -169,17 +171,18 @@ a {
 .Breakdown{  
   height: 100%;
   width: 100%;
-  margin-top: 55%;
+  /* margin-top: 0%;s */
   font-size: 30px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   text-align: center;
-  position:fixed;
+  position:relative;
   right: 0;
-  flex-grow: 100;
-  padding-left: 5%;
-  padding-right: 5%;
+  flex-grow: 100%;
+  /* padding-left: 5%; */
+  /* padding-right: 5%; */
+  /* border: 2px solid red; */
 }
 .DMV_img{
   height: 100%;
@@ -198,6 +201,7 @@ a {
   width: 100%;
   margin-top: 2%;
   float: center;
+  
 }
 
 .loadBar{

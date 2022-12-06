@@ -22,7 +22,9 @@ const EntryBox = () => {
   };
 
   return (
-    <Container>
+    <Container style={{
+      minWidth: "100%",
+    }}>
       <div>
         <form noValidate autoComplete="off" onSubmit={handleSubmit}>
           <div className="TextBox">
