@@ -220,5 +220,21 @@ a {
   transform: translate(-50%, -50%);
 }
 
+.Company{
+  text-align: left;
+  font-weight: bold;
+  font-size: 90px;
+  
+  
+}
+
+.Description{
+  text-align: left;
+  
+  font-weight:100;
+  font-size: 20px;
+  
+  width:200mm;
+}
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
