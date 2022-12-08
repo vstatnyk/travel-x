@@ -220,10 +220,13 @@ a {
   transform: translate(-50%, -50%);
 }
 
+
+
 .Company{
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   font-size: 90px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
   
 }
@@ -231,10 +234,18 @@ a {
 .Description{
   text-align: left;
   
-  font-weight:100;
+  font-weight:50;
   font-size: 20px;
   
-  width:200mm;
+  width:160mm;
+  margin-left: 5%;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.Image{
+  margin-right: 50%;
+  max-width: 30%;
+  text-align: right;
 }
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
