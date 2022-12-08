@@ -45,7 +45,7 @@ const About = () => {
             <AboutCard 
               imgPath={brianImg}
               name={"Brian Beilby"}
-              aboutInfo={"I am attending CSUS, studying Computer Science. This is my first big web-development project but, in the past, I have worked on many projects for an internship organization which is where most of my practical experience has come from. You can contact me directly at "}
+              aboutInfo={"Back End & Front End (Data Processing/Storage, Authentication, Face Comparison, pages, etc)."}
               email={"brianbeilby98@gmail.com"}
             />
           </Grid>
