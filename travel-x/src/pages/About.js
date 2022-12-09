@@ -7,6 +7,7 @@ import brianImg from "../components/images/brianbeilbypic.jpg";
 import coltonImg from "../components/images/colton_carvalho.jpg";
 import moshImg from "../components/images/Resized Photo for Profile Picture.jpg";
 import vsImg from "../components/images/Vstat.jpg";
+import smImg from "../components/images/ShafiiMohammedPic.jpg";
 import AboutCard from '../components/AboutCard';
 import HomeSec from "../components/images/HomeSec.jpg";
 import Master from "../components/images/Masterpiece.png"
@@ -77,9 +78,10 @@ const About = () => {
           </Grid>
           <Grid item xs="auto">
             <AboutCard 
-              imgPath={img1}
-              name={"Test 5"}
-              aboutInfo={"This clown did some coding. What a nerd"}
+              imgPath={smImg}
+              name={"Shafii Mohammed"}
+              aboutInfo={"Front End (Logo, pages, etc)"}
+              email={"shafii5703@gmail.com"}
             />
           </Grid>
           <Grid item xs="auto">
