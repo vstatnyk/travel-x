@@ -282,7 +282,7 @@ const DataDisplay = (props) => {
                     size="small"
                     onClick={handleEditOpen}
                     sx={{
-                      backgroundColor: "#1612e3", color: "#fff",
+                      backgroundColor: "#2278cf", color: "#fff",
                       "&:hover": { backgroundColor: "#fff", color: "#303030" },
                     }}
                   >
@@ -294,7 +294,7 @@ const DataDisplay = (props) => {
                     onClick={handleCompareOpen}
                     style={{ marginLeft: "auto" }}
                     sx={{
-                      backgroundColor: "#1612e3", color: "#fff",
+                      backgroundColor: "#2278cf", color: "#fff",
                       "&:hover": { backgroundColor: "#fff", color: "#303030" },
                     }}
                   >
