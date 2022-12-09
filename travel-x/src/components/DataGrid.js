@@ -264,15 +264,15 @@ const DataDisplay = (props) => {
                         </Collapse>
                       )}
                     </div>
-                    <Item>Date of Birth: {dosData.dob}</Item>
-                    <Item>Driver's License Number: {dmvData.dlNumber}</Item>
-                    <Item>Passport Number: {dosData.passportNumber}</Item>
-                    <Item>Passport Expiration Date: {dosData.passportExp}</Item>
-                    <Item>Flight Departure Time: {dotData.departTime}</Item>
-                    <Item>Flight Arrival Time: {dotData.arrivalTime}</Item>
-                    <Item>Flight Number: {dotData.flightNum}</Item>
-                    <Item>
-                      <a href={manifestUrl}>Download Flight Manifest</a>
+                    <Item sx = {{color: "#303030"}}>Date of Birth: {dosData.dob}</Item>
+                    <Item sx = {{color: "#303030"}}>Driver's License Number: {dmvData.dlNumber}</Item>
+                    <Item sx = {{color: "#303030"}}>Passport Number: {dosData.passportNumber}</Item>
+                    <Item sx = {{color: "#303030"}}>Passport Expiration Date: {dosData.passportExp}</Item>
+                    <Item sx = {{color: "#303030"}}>Flight Departure Time: {dotData.departTime}</Item>
+                    <Item sx = {{color: "#303030"}}>Flight Arrival Time: {dotData.arrivalTime}</Item>
+                    <Item sx = {{color: "#303030"}}>Flight Number: {dotData.flightNum}</Item>
+                    <Item sx = {{color: "#303030"}}>
+                      <a href={manifestUrl} >Download Flight Manifest</a>
                     </Item>
                   </Stack>
                 </CardContent>
@@ -282,7 +282,7 @@ const DataDisplay = (props) => {
                     size="small"
                     onClick={handleEditOpen}
                     sx={{
-                      backgroundColor: "#303030",
+                      backgroundColor: "#1612e3", color: "#fff",
                       "&:hover": { backgroundColor: "#fff", color: "#303030" },
                     }}
                   >
@@ -294,7 +294,7 @@ const DataDisplay = (props) => {
                     onClick={handleCompareOpen}
                     style={{ marginLeft: "auto" }}
                     sx={{
-                      backgroundColor: "#303030",
+                      backgroundColor: "#1612e3", color: "#fff",
                       "&:hover": { backgroundColor: "#fff", color: "#303030" },
                     }}
                   >
