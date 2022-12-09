@@ -9,6 +9,7 @@ import moshImg from "../components/images/Resized Photo for Profile Picture.jpg"
 import vsImg from "../components/images/Vstat.jpg";
 import AboutCard from '../components/AboutCard';
 import HomeSec from "../components/images/HomeSec.jpg";
+import Master from "../components/images/Masterpiece.png"
 
 const About = () => {
   return (
@@ -68,7 +69,7 @@ const About = () => {
           </Grid>
           <Grid item xs="auto">
             <AboutCard 
-              imgPath={img1}
+              imgPath={Master}
               name={"Alexzander Kemble"}
               aboutInfo={"Front End (dark mode, pages, etc)"}
               email={"akemble@csus.edu"}
