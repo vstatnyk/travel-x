@@ -4,10 +4,10 @@ const {
 } = require("@aws-sdk/client-rekognition");
 
 const client = new RekognitionClient({
-  region: process.env.REACT_APP_AWS_REGION,
+  region: "us-west-1",
   credentials: {
-    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+    accessKeyId: "AKIA4VOFC6VNUIWXIKMB",
+    secretAccessKey:"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",
   },
 });
 
