@@ -169,13 +169,14 @@ a {
 }
 
 .Breakdown{  
+  margin-top: 2%;
   height: 100%;
   width: 100%;
   /* margin-top: 0%;s */
   font-size: 30px;
   display: flex;
   /* justify-content: center; */
-  align-items: center;
+  align-items: top;
   text-align: center;
   position:relative;
   right: 0;
@@ -189,18 +190,24 @@ a {
   width: 100%;
   margin-top: 2%;
   float: left;
+  /* border: 2px solid red; */
 }
 .DOS_img{
   height: 100%;
   width: 100%;
   margin-top: 2%;
   float: right;
+  /* border: 2px solid red; */
 }
 .PersonInfo{
   height: 100%;
   width: 100%;
   margin-top: 2%;
-  float: center;
+  margin-left: 1%;
+  margin-right: 1%;
+  /* float: center; */
+  position:sticky;
+  /* border: 2px solid red; */
   
 }
 
