@@ -237,11 +237,9 @@ a {
 
 .Description{
   text-align: center;
-  position: absolute;
   font-weight:50;
   font-size: 20px;
   
-  width:200mm;
   
   font-family: 'Times New Roman', Times, serif;
 }
