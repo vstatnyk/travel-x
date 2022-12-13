@@ -17,7 +17,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Icon } from "@mui/material";
 import logo from "./images/logo8.svg";
 
-const pages = ["Search", "About", "Contact"];
+const pages = ["Search", "Contact", "About" ];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
