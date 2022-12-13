@@ -213,14 +213,14 @@ const DataDisplay = (props) => {
         ) : (
           <div className="Breakdown">
             <div className="DMV_img">
-              <Card sx={{ maxWidth: "100%" }}>
+              <Card sx={{ maxWidth: "100%", backgroundColor: "burlywood" }}>
                 <Typography
                   variant="body1"
-                  color="text.primary"
-                  fontSize={40}
+                  color="black"
+                  fontSize={60}
                   textAlign="center"
                 >
-                  {props.dept}
+                  DMV
                 </Typography>
                 <CardMedia
                   className="position"
@@ -233,7 +233,7 @@ const DataDisplay = (props) => {
             <div className="PersonInfo">
               <Card elevation={15} sx={{ backgroundColor: "burlywood" }}>
                 <CardContent>
-                  <Typography gutterBottom variant="h3" component="div">
+                  <Typography gutterBottom variant="h3" component="div" style = {{color:"#303030"}}>
                     {dmvData.name}
                   </Typography>
                   <Stack
@@ -264,14 +264,14 @@ const DataDisplay = (props) => {
                         </Collapse>
                       )}
                     </div>
-                    <Item sx = {{color: "#303030"}}>Date of Birth: {dosData.dob}</Item>
-                    <Item sx = {{color: "#303030"}}>Driver's License Number: {dmvData.dlNumber}</Item>
-                    <Item sx = {{color: "#303030"}}>Passport Number: {dosData.passportNumber}</Item>
-                    <Item sx = {{color: "#303030"}}>Passport Expiration Date: {dosData.passportExp}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Departure Time: {dotData.departTime}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Arrival Time: {dotData.arrivalTime}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Number: {dotData.flightNum}</Item>
-                    <Item sx = {{color: "#303030"}}>
+                    <Item style = {{color: "#303030"}}> Date of Birth: {dosData.dob}</Item>
+                    <Item style = {{color:"#303030"}}>Driver's License Number: {dmvData.dlNumber}</Item>
+                    <Item style = {{color:"#303030"}}>Passport Number: {dosData.passportNumber}</Item>
+                    <Item style = {{color:"#303030"}}>Passport Expiration Date: {dosData.passportExp}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Departure Time: {dotData.departTime}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Arrival Time: {dotData.arrivalTime}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Number: {dotData.flightNum}</Item>
+                    <Item style = {{color:"#303030"}}>
                       <a href={manifestUrl} >Download Flight Manifest</a>
                     </Item>
                   </Stack>
@@ -477,14 +477,14 @@ const DataDisplay = (props) => {
               </Card>
             </div>
             <div className="DOS_img">
-              <Card sx={{ maxWidth: "100%" }}>
+              <Card sx={{ maxWidth: "100%", backgroundColor: "burlywood"}} >
                 <Typography
                   variant="body1"
-                  color="text.primary"
-                  fontSize={40}
+                  color="black"
+                  fontSize={60}
                   textAlign="center"
                 >
-                  {props.dept}
+                  DOS
                 </Typography>
                 <CardMedia
                   className="position"
