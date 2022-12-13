@@ -217,7 +217,7 @@ const DataDisplay = (props) => {
                 <Typography
                   variant="body1"
                   color="text.primary"
-                  fontSize={40}
+                  fontSize={60}
                   textAlign="center"
                 >
                   DMV
@@ -481,7 +481,7 @@ const DataDisplay = (props) => {
                 <Typography
                   variant="body1"
                   color="text.primary"
-                  fontSize={40}
+                  fontSize={60}
                   textAlign="center"
                 >
                   DOS
