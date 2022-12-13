@@ -232,20 +232,15 @@ a {
 }
 
 .Description{
-  text-align: left;
+  text-align: center;
   
   font-weight:50;
   font-size: 20px;
   
-  width:160mm;
-  margin-left: 5%;
+  width:200mm;
+  
   font-family: 'Times New Roman', Times, serif;
 }
 
-.Image{
-  margin-right: 50%;
-  max-width: 30%;
-  text-align: right;
-}
 /* TODO: */
 /* make dark mode button aligned to the right instead fo fixed position */
