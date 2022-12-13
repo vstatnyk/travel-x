@@ -220,7 +220,7 @@ const DataDisplay = (props) => {
                   fontSize={40}
                   textAlign="center"
                 >
-                  {props.dept}
+                  DMV
                 </Typography>
                 <CardMedia
                   className="position"
@@ -484,7 +484,7 @@ const DataDisplay = (props) => {
                   fontSize={40}
                   textAlign="center"
                 >
-                  {props.dept}
+                  DOS
                 </Typography>
                 <CardMedia
                   className="position"
