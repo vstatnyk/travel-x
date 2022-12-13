@@ -233,7 +233,7 @@ const DataDisplay = (props) => {
             <div className="PersonInfo">
               <Card elevation={15} sx={{ backgroundColor: "burlywood" }}>
                 <CardContent>
-                  <Typography gutterBottom variant="h3" component="div">
+                  <Typography gutterBottom variant="h3" component="div" style = {{color:"#303030"}}>
                     {dmvData.name}
                   </Typography>
                   <Stack
