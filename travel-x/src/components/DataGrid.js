@@ -213,10 +213,10 @@ const DataDisplay = (props) => {
         ) : (
           <div className="Breakdown">
             <div className="DMV_img">
-              <Card sx={{ maxWidth: "100%" }}>
+              <Card sx={{ maxWidth: "100%", backgroundColor: "burlywood" }}>
                 <Typography
                   variant="body1"
-                  color="text.primary"
+                  color="black"
                   fontSize={60}
                   textAlign="center"
                 >
@@ -477,10 +477,10 @@ const DataDisplay = (props) => {
               </Card>
             </div>
             <div className="DOS_img">
-              <Card sx={{ maxWidth: "100%" }}>
+              <Card sx={{ maxWidth: "100%", backgroundColor: "burlywood"}} >
                 <Typography
                   variant="body1"
-                  color="text.primary"
+                  color="black"
                   fontSize={60}
                   textAlign="center"
                 >
