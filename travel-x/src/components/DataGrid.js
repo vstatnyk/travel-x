@@ -264,14 +264,14 @@ const DataDisplay = (props) => {
                         </Collapse>
                       )}
                     </div>
-                    <Item sx = {{color: "#303030"}}>Date of Birth: {dosData.dob}</Item>
-                    <Item sx = {{color: "#303030"}}>Driver's License Number: {dmvData.dlNumber}</Item>
-                    <Item sx = {{color: "#303030"}}>Passport Number: {dosData.passportNumber}</Item>
-                    <Item sx = {{color: "#303030"}}>Passport Expiration Date: {dosData.passportExp}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Departure Time: {dotData.departTime}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Arrival Time: {dotData.arrivalTime}</Item>
-                    <Item sx = {{color: "#303030"}}>Flight Number: {dotData.flightNum}</Item>
-                    <Item sx = {{color: "#303030"}}>
+                    <Item style = {{color: "#303030"}}> Date of Birth: {dosData.dob}</Item>
+                    <Item style = {{color:"#303030"}}>Driver's License Number: {dmvData.dlNumber}</Item>
+                    <Item style = {{color:"#303030"}}>Passport Number: {dosData.passportNumber}</Item>
+                    <Item style = {{color:"#303030"}}>Passport Expiration Date: {dosData.passportExp}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Departure Time: {dotData.departTime}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Arrival Time: {dotData.arrivalTime}</Item>
+                    <Item style = {{color:"#303030"}}>Flight Number: {dotData.flightNum}</Item>
+                    <Item style = {{color:"#303030"}}>
                       <a href={manifestUrl} >Download Flight Manifest</a>
                     </Item>
                   </Stack>
