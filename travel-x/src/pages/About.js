@@ -56,7 +56,7 @@ const About = () => {
             <AboutCard 
               imgPath={moshImg}
               name={"Moshley Marcelo"}
-              aboutInfo={"Worked on the backend code for the edit button alongside Colton, created the About us part of the project for the front-end, worked on inserting photos, etc."}
+              aboutInfo={"Worked on the backend code for the edit button alongside Colton, created the About us part of the project for the front-end, worked on inserting photos into Travel-X, etc."}
               email={"moshleymarcelo11@yahoo.com"}
             />
           </Grid>
